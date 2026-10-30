@@ -286,6 +286,8 @@ h1, h2, h3, p { margin-top: 0; }
 }
 @media (max-width: 760px) {
   .economics-strip { grid-template-columns: repeat(2,minmax(0,1fr)); }
+  .economics-strip > div:nth-child(3n) { border-right: 1px solid #d5dfd5; }
+  .economics-strip > div:nth-child(3n + 1) { padding-left: 12px; }
   .economics-strip > div:nth-child(2n) { border-right: 0; }
   .economics-strip > div:nth-child(2n + 1) { padding-left: 0; }
   .site-header { height: 68px; padding: 0 20px; }
