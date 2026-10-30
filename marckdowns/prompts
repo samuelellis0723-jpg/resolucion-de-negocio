@@ -1,0 +1,205 @@
+Prompts Gauntlet — Sitio web y caso Sol de Casa
+
+Uso
+
+El Prompt 1 ya se ejecutó y la auditoría del Nivel 1 está cerrada. Sigue ahora con el Prompt 2 y después con 3 y 4; no repitas el Prompt 1 salvo que aparezca una contradicción nueva. Pega cada prompt en el mismo chat de Codex y en el repositorio del proyecto.
+
+Estado confirmado: en markdowns/ están auditoria-nivel-1.md, sol-de-casa-nivel-1-modelo.md, recomendacion-andres-sol-de-casa.md y en-que-se-equivoco-o-nos-confundio-la-ia.md. El Excel y los originales de marckdowns/ se conservaron; el Excel fue consultado solo en lectura. La auditoría reporta, bajo los supuestos documentados, 36,08 ventas, 149,56 visitas, capacidad de 150, CAC real $492,58 y LTV 3,30x. Conserva esos números y sus supuestos como referencia auditada, no como hechos nuevos del caso. El registro distingue errores observados en distintas versiones; no los fusiones en un solo incidente. El repositorio aún no contiene una app React.
+
+El usuario hará la calculadora en Google Sheets por separado. Codex no debe crear, editar ni entregar spreadsheets. Si encuentra el .xlsx del Nivel 1, puede consultarlo solo en modo lectura; no dependas de ese archivo. La landing y la calculadora dentro del sitio son trabajo obligatorio de Codex. La app principal debe construirse en React siguiendo la estructura base compartida; se pueden instalar las dependencias npm necesarias. No se requiere backend de producción. Si el flujo del formulario necesita persistencia demostrable, se permite un mock local con json-server y db.json, claramente rotulado como demostración. Busca los artefactos por nombre desde la raíz real del repo. El usuario nombró carpetas markdowns/ y marckdowns/; inspecciona ambas, conserva los originales y deja los entregables nuevos en markdowns/. La ruta absoluta de Windows compartida es una pista, no la ruta que debe quedar en el código.
+
+El escenario propio y el registro de errores ya fueron revisados en la auditoría. Usa los resultados de 36,08 ventas, 149,56 visitas, capacidad 150, CAC real $492,58 y LTV 3,30x bajo los supuestos documentados; reabre la conciliación solo si encuentras una contradicción nueva. Mantén la batería fuera de la caja base porque faltan fechas de cobro y pago, y conserva separados los errores observados por versión.
+
+Cada prompt contiene contexto suficiente. Si el contexto canónico está en el repo, léelo junto con estructuraBase.md, reglas.md y Bpracticas.md, incluyendo variantes de nombres. El archivo de prompts citado por el contexto puede no existir dentro del repositorio porque se pega desde fuera; no lo busques como requisito ni detengas el trabajo si falta. Si faltan otros archivos, continúa con las reglas y datos incluidos en el prompt.
+
+PROMPT 1 — AUDITORÍA DEL ANÁLISIS NIVEL 1, SIN TOCAR HOJAS
+
+[CAJA 1: LA TAREA — ¿Qué quieres?]
+
+Antes de implementar, revisa el repositorio y lee los archivos de markdowns/, en especial estructuraBase.md, las variantes de reglas.md y las variantes de Bpracticas.md, además de sol-de-casa-contexto-canonico.md si existe. Aplica esas reglas al código React. Si los archivos no están presentes, trabaja con las reglas incluidas en este prompt y no detengas el encargo para pedirlos.
+
+
+Audita el análisis financiero del Nivel 1 ya reportado y los documentos recomendacion-andres-sol-de-casa.md, sol-de-casa-nivel-1-modelo.md y en-que-se-equivoco-o-nos-confundio-la-ia.md en markdowns/ o marckdowns/. El usuario hará Google Sheets por separado: no crees, edites, conviertas ni entregues hojas de cálculo. Si existe el Excel outputs/sol-de-casa-nivel-1/sol-de-casa-nivel-1.xlsx, consúltalo solo en modo lectura como referencia opcional. Verifica las cifras con las fórmulas y controles de este prompt, registra discrepancias, revisa el error de interpolación solo con evidencia disponible y conserva la recomendación. Usa la skill financiera que Codex identifica como analista-unit-economics o su equivalente disponible.
+
+Contexto completo de este encargo, en USD y cifras mensuales:
+- Instalación promedio $6.500; cliente paga 50 % al firmar y 50 % al terminar instalación el mes siguiente.
+- Equipos 55 % del precio, pagados el mes de firma; instalación 17 %, pagada al mes siguiente; margen bruto 28 %.
+- Comisión 3 % del precio, pagada al firmar y aplicable a todas las ventas. Va en contribución, no CAC.
+- Visita realizada cuesta $60. Dos técnicos permiten 100 visitas/mes. Cada técnico adicional cuesta $1.800/mes y agrega 50 visitas desde el mes siguiente; máximo dos.
+- Meta actual $4.000 → 500 leads, CPL $8. Google $4.000 → 100 leads, CPL $40.
+- Tasas Meta: contacto 55 %, agenda sobre contacto 30 %, visita realizada sobre agenda 70 %, cierre sobre visita 18 %. Teléfonos inválidos 18 %.
+- Google: contacto 85 %, agenda 55 %, visita realizada 85 %, cierre 30 %. Teléfonos inválidos 3 %.
+- Respuesta media 31 horas. Mes 0 tuvo 22 ventas.
+- Histórico inversión→leads Meta: $0→0; $2k→280; $4k→500; $6k→680; $8k→840; $10k→960. Google: $0→0; $2k→55; $4k→100; $6k→135; $8k→160; $10k→160 (tope).
+- Batería $3.000, margen bruto 20 %, comisión 3 %; 3 de 20 clientes la agregaron. Extrapolar 15 % a futuro es [SUPUESTO].
+- Caja inicial $12.000, piso $5.000, fijos $18.000/mes. Caja de mes t incluye cobros de t y t−1; paga equipos/comisión en t, instalación en t−1, visitas, ads, fijos y técnicos.
+- Datos de landing del caso ficticio: 420 casas instaladas; 4,9 estrellas y 210 reseñas; ahorro promedio indicado 70 %. No hay datos de dirección, cobertura, garantías, financiación o teléfono.
+
+Los resultados auditados del plan propio son 36,08 ventas, 149,56 visitas, capacidad 150, CAC real total $492,58 y LTV:CAC 3,30x desde el mes 2, bajo los supuestos documentados. Reutiliza las entradas y fórmulas de markdowns/sol-de-casa-nivel-1-modelo.md; si detectas una contradicción nueva, documéntala sin forzar cifras.
+
+Usa estas ocho reglas: LTV es una venta; funnel completo ocurre en el mismo mes; tasas constantes con inversión; si se supera capacidad, prioriza Google y después Meta; interpola linealmente e incluye inversión cero→cero; escenario teórico agencia permite CPL Meta constante $8 pero se compara con histórico; respuesta <5 min más filtro reduce leads Meta 20 % y cambia tasas Meta a 80 % contacto, 40 % agenda, 75 % visita, 22 % cierre (supuesto); cualquier otro dato debe marcarse y justificarse como supuesto. No restes teléfonos inválidos por separado si ya se usa la tasa de contacto por lead.
+
+No construyas ni modifiques una hoja de cálculo: esa parte la hará el usuario. Deja en Markdown la recomendación de una página para Andrés, el registro de errores reales de IA y la base de fórmulas con trazabilidad. Comprueba por cálculo independiente el funnel, contribución, CAC de anuncios, CAC real=(ads+$60×visitas realizadas)/ventas, LTV:CAC, visitas/venta, capacidad, valor de visita=(cierre×contribución)-$60 y payback de caja. Incluye escenarios de hoy, agencia teórica $8k/$0, agencia histórica $8k Meta=840 leads y plan propio con dos cambios. Si el Excel está presente, úsalo solo como referencia de lectura y registra cualquier discrepancia; no lo edites.
+
+[CAJA 2: EL MÉTODO — ¿Cómo trabaja?]
+
+Trabaja con autonomía total hasta el final; ambigüedades menores se resuelven con la opción más sólida y se documentan. Loop continuo: planifica → calcula → construye → prueba/verifica → revisa → corrige → repite. No entregues el primer borrador. Usa un Árbitro Adversarial interno que intente encontrar errores e incoherencias y obliga al constructor a corregirlos.
+
+El árbitro debe preguntar en cada ronda:
+1. ¿La contribución resta la comisión del 3 % y deja fuera costos fijos?
+2. ¿El CAC real añade visitas realizadas, no visitas pedidas?
+3. ¿Se aplicó la prioridad Google antes que Meta cuando se llena capacidad?
+4. ¿Los supuestos y fórmulas están separados, nombrados y trazables en el análisis?
+5. ¿La recomendación contempla que Meta tiene CPL menor pero CAC real mayor?
+
+[CAJA 3: EL LISTÓN — ¿Qué nivel tiene que alcanzar para detener el bucle?]
+
+Precisión contable completa y trazabilidad a sección del caso o [SUPUESTO]. Controles aproximados: contribución $1.625; Meta 57,75 visitas, 10,395 ventas y CAC real $718,13; Google 39,7375 visitas, 11,92125 ventas y CAC real $535,54; valores de visita $232,50 y $427,50. Diferencias de redondeo se explican. Las cuentas deben ser reproducibles y no presentarse como cifras independientes de sus inputs y fórmulas.
+
+[CAJA 4: RESTRICCIONES TÉCNICAS Y FORMATO DEL ENTREGABLE — ¿Cuándo se da por acabado?]
+
+Sigue las reglas de React y estructura del usuario si tocas el proyecto: Componentes → Páginas → Rutas → App → main.jsx; carpetas feature-based y kebab-case; componentes PascalCase; variables camelCase; un componente por archivo; co-location; responsabilidades únicas; dividir componentes de ~200 líneas; profundidad máxima 2–3 niveles; alias absolutos si el proyecto lo admite; hooks solo en nivel superior, estado inmutable y efectos en useEffect/handlers. Usa formatter/linter existentes.
+
+No inventes errores de IA: conserva una cita real, el motivo y la corrección. Si no existe error observado, escribe “no observado” y registra solo ejemplos hipotéticos como hipotéticos. Sin placeholders ni cálculos sin fórmula. Guarda la recomendación y auditoría en markdowns/. No crees ni edites hojas; el usuario hará esa entrega por separado.
+
+
+PROMPT 2 — LANDING PAGE Y CALCULADORA WEB DEL NIVEL 2
+
+[CAJA 1: LA TAREA — ¿Qué quieres?]
+
+Antes de implementar, revisa el repositorio y lee los archivos de markdowns/, en especial estructuraBase.md, las variantes de reglas.md y las variantes de Bpracticas.md, además de sol-de-casa-contexto-canonico.md si existe. Aplica esas reglas al código React. Si los archivos no están presentes, trabaja con las reglas incluidas en este prompt y no detengas el encargo para pedirlos.
+
+
+Construye el sitio web integrado de Sol de Casa con landing para clientes y calculadora interactiva del Nivel 2. Codex no debe depender de la conversación previa. El modelo auditado en markdowns/ reporta, bajo sus supuestos, 36,08 ventas, 149,56 visitas, capacidad 150, CAC real total $492,58 y LTV:CAC 3,30x desde el mes 2. Lee markdowns/auditoria-nivel-1.md y markdowns/sol-de-casa-nivel-1-modelo.md para obtener y etiquetar sus inputs; no hardcodees los resultados. El Excel solo puede consultarse en lectura. Codex informó que el repositorio aún no tiene app React: crea una app React/Vite limpia y ejecutable siguiendo la estructura base, sin alterar el Excel ni los originales. Sigue obligatoriamente la estructura base React compartida; puedes instalar paquetes npm necesarios para UI, gráficos y desarrollo. Usa frontend-design y la habilidad financiera que Codex identifica como analista-unit-economics o equivalente disponible. Lee los cuatro documentos revisados en markdowns/: auditoria-nivel-1.md, sol-de-casa-nivel-1-modelo.md, recomendacion-andres-sol-de-casa.md y en-que-se-equivoco-o-nos-confundio-la-ia.md. Los originales están en marckdowns/ y el Excel es solo referencia de lectura. No edites ni dupliques hojas de cálculo. Datos completos:
+- Caso ficticio; USD. Instalación promedio $6.500; margen bruto 28 %; comisión 3 %; contribución $1.625.
+- Meta $4.000 produce 500 leads; Google $4.000 produce 100.
+- Tasas Meta: 55 % contacto, 30 % agenda, 70 % visita realizada, 18 % cierre. Google: 85 %, 55 %, 85 %, 30 %.
+- Histórico Meta: $0→0, $2k→280, $4k→500, $6k→680, $8k→840, $10k→960. Google: $0→0, $2k→55, $4k→100, $6k→135, $8k→160, $10k→160 (tope).
+- Visita $60; capacidad base 100; técnico extra $1.800/mes y +50 visitas desde el siguiente mes.
+- Batería $3.000, margen bruto 20 %, comisión 3 %, prueba de 3/20 agregados.
+- Caso educativo indica 420 instalaciones, 4,9 estrellas en 210 reseñas, ahorro promedio 70 %. No inventar dirección, teléfonos, cobertura, garantías, financiación, certificaciones, promociones o garantías de ahorro.
+
+La landing debe llevar desde el interés a solicitar cotización, mostrar información veraz del caso y rotularse como prototipo educativo. El formulario debe validar campos y simular el envío sin un backend de producción. Para persistencia demostrable, usa json-server como dependencia solo de desarrollo con un db.json local y una colección solicitudes; deja scripts claros para iniciar React y la API mock. Muestra un aviso visible: la solicitud se guarda solo en la base JSON local de demostración, no llega a Sol de Casa ni inicia una cotización real. Indica que no se ingresen datos sensibles y no publiques ni despliegues el mock.
+
+La calculadora dentro del sitio es obligatoria e independiente de la hoja de Google Sheets que hará el usuario. Controles: inversión por canal, 4 tasas por canal, costo visita, capacidad/técnicos, precio, margen, comisión y porcentaje batería. Resultados en vivo por canal/total: leads, contactos, agendas, visitas pedidas y realizadas, ventas, CPL, CAC anuncios, CAC real, LTV:CAC, capacidad y valor de visita. Debe modelar la interpolación lineal por los puntos de inversión, incluyendo cero.
+
+Añade al menos tres gráficos: funnel por canal; CPL frente a CAC real; visitas pedidas vs capacidad (línea 100, y capacidad efectiva si se añade técnico). Semáforo de LTV:CAC, alerta de capacidad, botón para restaurar datos del caso y visual explícito “lead de Meta más barato, cliente Meta más caro”. Para el caso actual muestra aproximadamente Meta CAC real $718,13; Google $535,54; diferencia Meta +34 %.
+
+[CAJA 2: EL MÉTODO — ¿Cómo trabaja?]
+
+Autonomía hasta terminar, sin detenerte a pedir confirmación para decisiones menores; documenta elecciones. Loop: planifica → construye → prueba → revisa → corrige → vuelve a probar. No entregues primera versión. Usa un Árbitro Adversarial interno que intente invalidar el modelo y el diseño; corrige cada hallazgo.
+
+Preguntas del árbitro:
+1. ¿La escala de inversión usa interpolación y respeta el tope Google?
+2. ¿La capacidad limita visitas realizadas y deja las visitas no atendidas fuera de ventas?
+3. ¿La calculadora muestra unidades y nombres claros, no variables genéricas?
+4. ¿Landing presenta el 70 % como promedio reportado, no promesa?
+5. ¿Los controles restauran todos los datos base y los gráficos responden?
+
+[CAJA 3: EL LISTÓN — ¿Qué nivel tiene que alcanzar para detener el bucle?]
+
+Diseño web de nivel Awwwards: visual solar distintivo, responsive, accesible, jerarquía limpia, copy centrado en el cliente e interacciones funcionales. El dashboard con valores base debe coincidir con los controles numéricos del caso incluidos en este prompt, con menos de 1 % de diferencia. No depende de Google Sheets. Cada resultado debe poder rastrearse a una fórmula. Consola sin errores.
+
+[CAJA 4: RESTRICCIONES TÉCNICAS Y FORMATO DEL ENTREGABLE — ¿Cuándo se da por acabado?]
+
+Sigue estructura React del usuario cuando aplique: Componentes → Páginas → Rutas → App → main.jsx, organización feature-based, archivos kebab-case, componentes PascalCase, variables camelCase, un componente por archivo, responsabilidades únicas, co-location, hooks correctos, profundidad 2–3 niveles y alias absolutos si es viable. Si el repo ya existe, respeta sus instrucciones y no lo reestructures innecesariamente.
+
+Se permite instalar dependencias npm para desarrollar y ejecutar React/Vite. Además del sitio React, el caso pide un HTML autónomo del Nivel 2 que abra en navegador sin instalar dependencias locales; genera ese archivo único desde la misma lógica o sincronízalo de forma reproducible, no mantengas dos modelos independientes. Chart.js por CDN está permitido. No crear backend de producción. Si usas json-server, debe ser solo un mock local basado en db.json, con instrucciones de inicio y aviso claro en el formulario; no debe exponerse ni desplegarse. No usar placeholders, Lorem ipsum, enlaces falsos, formulario que afirme enviar a la empresa ni claims inventados. La calculadora tiene que existir en el sitio, no solo en Sheets.
+
+
+PROMPT 3 — SIMULADOR DE CAJA A 24 MESES DEL NIVEL 3
+
+[CAJA 1: LA TAREA — ¿Qué quieres?]
+
+Antes de implementar, revisa el repositorio y lee los archivos de markdowns/, en especial estructuraBase.md, las variantes de reglas.md y las variantes de Bpracticas.md, además de sol-de-casa-contexto-canonico.md si existe. Aplica esas reglas al código React. Si los archivos no están presentes, trabaja con las reglas incluidas en este prompt y no detengas el encargo para pedirlos.
+
+
+Añade el Nivel 3 al sitio React existente sin romper la landing, calculadora, HTML autónomo ni entregables del Nivel 1: simulador de caja mes 1–24 con tabla, escenarios, gráficos y pitch para banco. Busca los documentos anteriores en markdowns/ o marckdowns/; si existe Excel, úsalo solo en modo lectura. Reutiliza entradas auditadas y no edites la hoja que hará el usuario. Usa la habilidad financiera que Codex identifica como analista-unit-economics o equivalente disponible. No dependas de que el historial del chat siga disponible; aquí están las reglas:
+- Precio $6.500; cliente paga 50 % al firmar y 50 % al mes siguiente.
+- Equipos 55 % pagados en mes de firma; instalación 17 % pagada al mes siguiente; comisión 3 % pagada en firma.
+- Visita realizada $60; capacidad base 100, prioridad Google y luego Meta.
+- Fijos $18.000/mes; caja inicial $12.000; caja mínima $5.000; mes 0 tuvo 22 ventas.
+- Dos técnicos base; cada extra cuesta $1.800 desde el mes de contratación y aumenta capacidad en 50 desde el mes siguiente; máximo dos.
+- Tasas Meta: 55 %, 30 %, 70 %, 18 %. Google: 85 %, 55 %, 85 %, 30 % (contacto, agenda, visita realizada, cierre).
+- Leads por inversión interpolados linealmente:
+Meta: 0→0, $2k→280, $4k→500, $6k→680, $8k→840, $10k→960.
+Google: 0→0, $2k→55, $4k→100, $6k→135, $8k→160, $10k→160.
+- Inversiones dentro de Meta $0–$10.000 y Google $0–$8.000 (el histórico indica 160 leads máximo Google; no sobrepasarlo sin explicitar un modelo alternativo).
+- El plan propio ya fue reportado como auditado bajo los supuestos de markdowns/: 36,08 ventas, 149,56 visitas, capacidad 150, CAC real total $492,58 y LTV:CAC 3,30x desde el mes 2. Usa sus entradas y fórmulas documentadas; si no se pueden reconstruir desde markdowns/sol-de-casa-nivel-1-modelo.md, consulta el Excel solo en lectura y deja trazabilidad.
+- Cambios Nivel 1 posibles: filtro/respuesta reduce leads Meta 20 % y fija sus tasas en 80 %, 40 %, 75 %, 22 % [SUPUESTO]; batería $3.000, margen 20 %, comisión 3 %, tasa 3/20 observada [extrapolar es supuesto]; técnico extra según reglas arriba.
+
+Simula al menos cuatro planes: actual ($4k/$4k), agencia ($8k/$0; mostrar si usa historial o CPL teórico), y dos propios; al menos uno con técnico extra. Muestra caja mínima y mes, caja mes 24, instalaciones totales y reglas cumplidas. Por mes muestra inversión por canal, leads, visitas pedidas, capacidad, visitas hechas, ventas, entradas, salidas y caja final. Gráficos: caja con piso $5k y visitas pedidas frente a capacidad.
+
+Reglas de caja:
+- Entradas mes t = $3.250×ventas_t + $3.250×ventas_(t−1).
+- Salidas mes t = $3.770×ventas_t + $1.105×ventas_(t−1) + $60×visitas_realizadas + ads_t + $18.000 + $1.800×técnicos_extra_activos_pagados.
+- Caja_t = Caja_(t−1)+entradas_t−salidas_t.
+- Caja inicial $12.000 y ventas mes 0 = 22.
+- Desde el mes 19, inversión total Meta+Google no puede bajar frente al mes previo.
+- Caja nunca debe bajar de $5.000.
+
+Antes de proyectar, enseña la cuenta completa del mes 1 actual y compárala con ≈$15.700. Los flujos de batería no están especificados: no inventarlos; si el escenario los incluye, déjalos como [SUPUESTO] editable y explica su efecto.
+
+[CAJA 2: EL MÉTODO — ¿Cómo trabaja?]
+
+Autonomía hasta terminar; ambigüedades menores se resuelven con supuesto visible y editable. Loop: modela → calcula → verifica manualmente → simula escenarios → audita adversarialmente → corrige → repite. Usa un árbitro que intente encontrar errores en cada ronda.
+
+Preguntas del árbitro:
+1. ¿Los cobros y costos de cada venta están en los meses correctos?
+2. ¿Se cobra el técnico desde el mes de contratación y su capacidad desde el siguiente?
+3. ¿La prioridad Google se aplica antes de Meta en todos los meses?
+4. ¿Las reglas de piso y no reducción de inversión desde mes 19 se validan automáticamente?
+5. ¿La caja inicial y las 22 ventas del mes 0 se modelan una sola vez y sin duplicar cobros?
+
+[CAJA 3: EL LISTÓN — ¿Qué nivel tiene que alcanzar para detener el bucle?]
+
+El mes 1 actual debe llegar aproximadamente a $15.736; muestra entradas $144.027,81 y salidas $140.291,51, con diferencias explicadas solo por redondeo. El simulador y la calculadora del sitio deben compartir la misma lógica y coincidir entre sí con diferencia menor a 1 %; verifica también contra las cifras de control del caso. Ningún plan incumplidor se presenta como factible. No llamar “óptimo” a un plan sin búsqueda exhaustiva; declarar el procedimiento para seleccionar planes propios.
+
+[CAJA 4: RESTRICCIONES TÉCNICAS Y FORMATO DEL ENTREGABLE — ¿Cuándo se da por acabado?]
+
+Integra el simulador como feature/página React siguiendo Componentes → Páginas → Rutas → App → main.jsx, feature-based, co-location, archivos kebab-case, componentes PascalCase, variables camelCase, hooks correctos, componentes de responsabilidad única y máximo aproximado de 200 líneas por componente. Conserva landing y calculadora. Guarda supuestos del simulador en markdowns/. Sin placeholders, datos inventados, tablas incompletas ni gráficas decorativas. Entrega tabla por mes, cuatro planes, gráficos, supuestos y pitch de dos minutos.
+
+
+PROMPT 4 — AUDITORÍA FINAL, PRESENTACIÓN Y ENTREGA
+
+[CAJA 1: LA TAREA — ¿Qué quieres?]
+
+Antes de implementar, revisa el repositorio y lee los archivos de markdowns/, en especial estructuraBase.md, las variantes de reglas.md y las variantes de Bpracticas.md, además de sol-de-casa-contexto-canonico.md si existe. Aplica esas reglas al código React. Si los archivos no están presentes, trabaja con las reglas incluidas en este prompt y no detengas el encargo para pedirlos.
+
+
+Audita y cierra el proyecto completo de Sol de Casa. Integra los Markdown existentes que Codex dijo haber dejado en markdowns/ o marckdowns/. El usuario hará Google Sheets por separado. Si existe el Excel en outputs/sol-de-casa-nivel-1/, úsalo únicamente como referencia de lectura; no lo edites ni entregues una hoja. El plan propio auditado (36,08 ventas; 149,56 visitas; capacidad 150; CAC real $492,58; LTV:CAC 3,30x desde el mes 2) debe conservar trazabilidad a sus entradas en los documentos de markdowns/. Reabre la conciliación solo si encuentras una contradicción nueva; nunca hardcodees los resultados. Incluye landing, calculadora web, auditoría/documentación del Nivel 1, Nivel 3 en sitio, recomendación de una página, registro “En qué se equivocó o nos confundió la IA”, sensibilidad y presentación de tres minutos. La hoja de cálculo queda fuera del alcance de Codex.
+
+Contexto de control:
+- Instalación $6.500; contribución $6.500×28 %−$6.500×3 %=$1.625.
+- Meta actual: 500 leads; funnel 275 contactos→82,5 agendas→57,75 visitas→10,395 ventas; CAC real ≈$718,13; LTV:CAC ≈2,26.
+- Google: 100 leads; 85 contactos→46,75 agendas→39,7375 visitas→11,92125 ventas; CAC real ≈$535,54; LTV:CAC ≈3,03.
+- CAC real incluye anuncios más $60 por visita realizada; no incluye costos fijos.
+- Valor visita Meta $232,50; Google $427,50.
+- Meta CPL $8 y Google CPL $40, pero CAC real Meta es aproximadamente 34 % mayor.
+- Caja: inicio $12.000; piso $5.000; fijos $18.000; mes 0 ventas 22; caja mes 1 actual ≈$15.736.
+- Reglas Nivel 3: cobros 50/50; equipos 55 % en firma; instalación 17 % siguiente mes; comisión 3 % en firma; capacidad 100 más 50 por técnico extra desde el mes posterior; $1.800 por extra desde contratación; tope dos; desde mes 19 inversión total no disminuye.
+- Agencia debe compararse por CPL teórico ($8.000/Meta a CPL $8) y por histórico ($8.000 Meta =840 leads).
+- El caso es ficticio y el 70 % es ahorro promedio reportado, no garantía.
+
+Recalcula tres resultados con un método independiente. Prueba sensibilidad ±20 % en dos o tres variables inciertas. Revisa que la lista de supuestos esté completa; corrige referencias erróneas y registra errores reales de IA sin inventar citas. Prepara presentación para hablar tres minutos: una decisión, trampa, números, dos cambios y riesgos; además preguntas probables y respuestas. Mantén pitch bancario de dos minutos para Nivel 3.
+
+[CAJA 2: EL MÉTODO — ¿Cómo trabaja?]
+
+Trabaja de forma autónoma hasta terminar. Haz un loop de revisión: calcula/verifica → intenta encontrar contradicciones → corrige → repite. El Árbitro Adversarial debe tratar de tumbar cada cifra, recomendación, pantalla y escenario antes de darlo por terminado.
+
+Preguntas del árbitro:
+1. ¿La calculadora y el simulador del sitio coinciden con los controles financieros del caso con diferencia menor al 1 %?
+2. ¿Se valida a mano la fila de CAC real y el mes 1 de caja?
+3. ¿Cada supuesto está rotulado y sus efectos son visibles?
+4. ¿La landing separa los datos del caso ficticio de claims reales?
+5. ¿La recomendación se sostiene con sensibilidad y reconoce límites de caja/capacidad?
+
+[CAJA 3: EL LISTÓN — ¿Qué nivel tiene que alcanzar para detener el bucle?]
+
+Rigor financiero trazable al 100 %; cifras con fórmula y fuente; cero mezcla de venta bruta y contribución; LTV limitado a una venta; controles de caja cumplidos. Sitio responsive y accesible con visual de nivel Awwwards, copy concreto y microinteracciones funcionales. Ninguna conclusión debe depender de leer una cifra sin su unidad o fuente.
+
+[CAJA 4: RESTRICCIONES TÉCNICAS Y FORMATO DEL ENTREGABLE — ¿Cuándo se da por acabado?]
+
+Sigue las reglas de desarrollo del usuario: jerarquía Componentes → Páginas → Rutas → App → main.jsx, feature-based, co-location, kebab-case, PascalCase en componentes, camelCase para lógica, componentes pequeños, hooks correctos, imports absolutos si el proyecto los soporta y linter existente.
+
+No dejes placeholders, TODOs, enlaces falsos, errores en consola ni datos ficticios presentados como hechos. Si existe persistencia de formularios, debe identificarse como mock local de json-server/db.json, no como servicio real; no implementes backend de producción ni publiques el mock. Entrega sitio navegable, recomendación, presentación, pitch, sensibilidad y documentación en markdowns/. No generes ni modifiques Google Sheets o Excel: esa tarea corresponde al usuario. Incluye instrucciones exactas para abrirlo y un resumen de la decisión. No declares el trabajo listo hasta resolver los hallazgos del árbitro.

@@ -1,0 +1,218 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#173d35">
+  <title>Sol de Casa · Calculadora Nivel 2</title>
+  <style>*{box-sizing:border-box}body{margin:0;background:#f5f4e9;color:#173d35;font-family:Arial,Helvetica,sans-serif;font-size:14px}.solo-header{height:66px;padding:0 max(24px,calc((100% - 1280px)/2));display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #d5ddd3}.solo-brand{display:flex;align-items:center;gap:9px;color:#173d35;text-decoration:none;font-weight:700;font-size:18px;letter-spacing:-.06em}.solo-sun{color:#d89f19;font-size:22px}.solo-header>span,.solo-footer{color:#718076;font-size:10px}.solo-footer{padding:25px;text-align:center;border-top:1px solid #d5ddd3}.solo-hero,.solo-summary,.solo-trap,.solo-layout{width:min(1260px,calc(100% - 48px));margin:auto}.solo-hero{padding:54px 0 31px;display:flex;align-items:end;justify-content:space-between;gap:24px}.solo-eyebrow{margin:0 0 12px;color:#be6248;font-size:10px;font-weight:700;letter-spacing:.05em}.solo-hero h1{max-width:700px;margin:0;color:#0d302b;font-size:clamp(38px,5vw,62px);line-height:1;letter-spacing:-.07em}.solo-hero p:not(.solo-eyebrow){max-width:560px;color:#617269;font-size:13px;line-height:1.6}.solo-reset{min-height:43px;padding:0 15px;border:1px solid #8ba095;background:transparent;color:#173d35;font-weight:700;font-size:11px;cursor:pointer}.solo-reset:hover{background:#e6ede3}.solo-summary{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid #c7d2c8;border-bottom:1px solid #c7d2c8}.solo-summary article{min-height:114px;padding:17px;border-right:1px solid #d3ddd4;display:flex;flex-direction:column;gap:8px}.solo-summary article:last-child{border:0}.solo-summary span,.solo-summary small{color:#718076;font-size:9px}.solo-summary strong{color:#0d302b;font-size:29px;letter-spacing:-.06em}.solo-summary .solo-ratio--low strong{color:#b04731}.solo-summary .solo-ratio--mid strong{color:#a8750c}.solo-summary .solo-ratio--good strong{color:#237560}.solo-alert{width:min(1260px,calc(100% - 48px));margin:14px auto 0;padding:12px;background:#f5e1d7;color:#873c2b;font-size:11px}.solo-trap{display:flex;justify-content:space-between;align-items:center;gap:24px;margin-top:27px;padding:20px 23px;background:#173d35;color:#fffef8}.solo-trap small{color:#f1bf36;font-size:9px;font-weight:bold}.solo-trap h2{margin:7px 0;color:white;font-size:21px;line-height:1.16;letter-spacing:-.045em}.solo-trap p{margin:0;color:#c5d4c9;font-size:10px;line-height:1.5}.solo-trap>strong{flex:none;color:#f1bf36;font-size:30px;letter-spacing:-.05em}.solo-trap>strong span{display:block;color:#c5d4c9;font-size:9px;font-weight:400;letter-spacing:0}.solo-layout{display:grid;grid-template-columns:340px minmax(0,1fr);gap:38px;align-items:start;padding:38px 0 80px}.solo-controls{padding:22px;background:#e7ece2;border-top:4px solid #173d35}.solo-controls>h2{margin:0 0 7px;font-size:21px;letter-spacing:-.05em}.solo-controls>p,.solo-channel small{color:#728178;font-size:9px;line-height:1.5}.solo-channel{margin-top:20px;padding-top:17px;border-top:1px solid #c5d2c6}.solo-channel h3{margin:0 0 14px;display:flex;align-items:center;font-size:13px}.solo-dot{width:9px;height:9px;display:inline-block;margin-right:7px;border-radius:50%;background:#e0a71b}.solo-dot--google{background:#3b9a88}.solo-field{display:flex;flex-direction:column;gap:6px;margin-bottom:12px;color:#345248;font-size:9px;font-weight:bold}.solo-field input:not([type=range]),.solo-field select{width:100%;min-height:35px;padding:0 8px;border:1px solid #bfcbc1;background:#fbfcf6;color:#173d35;font-size:11px}.solo-field input[type=range]{width:100%;accent-color:#173d35}.solo-money{font-size:16px}.solo-rates{display:grid;grid-template-columns:1fr 1fr;gap:2px 12px}.solo-input{position:relative}.solo-input b{position:absolute;top:11px;right:9px;color:#758279;font-size:9px}.solo-input input{padding-right:23px!important}.solo-checkbox{display:flex;align-items:flex-start;gap:7px;margin:11px 0;color:#345248;font-size:9px;line-height:1.4}.solo-checkbox input{accent-color:#173d35}.solo-controls .solo-channel:last-child{padding-bottom:0}.solo-chart{margin-bottom:22px;padding:20px 22px 16px;background:#fffef8;border-top:2px solid #173d35}.solo-chart-heading{display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin-bottom:14px}.solo-chart-heading h2{margin:0;color:#173d35;font-size:19px;letter-spacing:-.045em}.solo-chart-heading span{color:#758279;font-size:9px;text-align:right}.solo-chart svg{display:block;width:100%;height:auto;overflow:visible}.svg-label{fill:#405b4f;font:700 11px Arial,sans-serif}.svg-number{fill:#496458;font:700 9px Arial,sans-serif}.svg-small{fill:#78887c;font:9px Arial,sans-serif}.solo-legend{display:flex;align-items:center;gap:15px;flex-wrap:wrap;margin-top:8px;color:#627269;font-size:8px}.solo-legend .solo-dot{width:8px;height:8px}.solo-muted{margin-left:auto;color:#879389}.solo-bar-key{width:8px;height:8px;display:inline-block;background:#b9c8b4}.solo-table-wrap{overflow-x:auto}table{width:100%;border-collapse:collapse;font-size:9px;white-space:nowrap}th,td{padding:9px;border-bottom:1px solid #d8e0d8;text-align:right}th:first-child,td:first-child{text-align:left}thead th{background:#e9eee5;color:#718076;font-size:8px}tbody th{color:#173d35}.solo-chart>p{color:#77867c;font-size:8px;line-height:1.5}@media(max-width:900px){.solo-layout{grid-template-columns:280px minmax(0,1fr);gap:20px}.solo-trap{align-items:flex-start}.solo-summary strong{font-size:24px}}@media(max-width:700px){.solo-header{padding:0 20px}.solo-header>span{max-width:130px;text-align:right;font-size:8px}.solo-hero,.solo-summary,.solo-trap,.solo-layout,.solo-alert{width:calc(100% - 36px)}.solo-hero{padding-top:37px;align-items:flex-start;flex-direction:column}.solo-hero h1{font-size:43px}.solo-summary{grid-template-columns:1fr 1fr}.solo-summary article:nth-child(2){border-right:0}.solo-summary article:nth-child(-n+2){border-bottom:1px solid #d3ddd4}.solo-trap{align-items:flex-start;flex-direction:column;gap:12px;padding:17px}.solo-trap>strong{font-size:24px}.solo-trap>strong span{display:inline;margin-left:5px}.solo-layout{grid-template-columns:1fr;padding-top:25px}.solo-controls{order:0}.solo-results{order:1}.solo-chart{padding:17px 13px}.solo-chart-heading{align-items:flex-start;flex-direction:column}.solo-chart-heading span{text-align:left}.solo-chart svg{min-width:460px}.solo-chart{overflow:hidden}.solo-muted{margin-left:0;flex-basis:100%}}@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}}
+.solo-actions{display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end}.solo-actions .solo-reset{padding:0 10px;font-size:9px}@media(max-width:700px){.solo-actions{justify-content:flex-start}}
+.solo-line-key{width:14px;height:0;display:inline-block;border-top:2px dashed #c4553b}.solo-line-key--base{border-top-color:#789185;border-top-style:dotted}
+</style>
+</head>
+<body>
+  <header class="solo-header"><a class="solo-brand" href="#inicio"><span class="solo-sun">◉</span> sol de casa</a><span>Prototipo educativo · Calculadora financiera</span></header>
+  <main id="standalone-app"></main>
+  <footer class="solo-footer">Caso ficticio Sol de Casa · Los resultados dependen de las entradas y supuestos visibles.</footer>
+  <script>(function attachSolDeCasaModel(root) {
+  const DEFAULT_INPUTS = {
+    installationPrice: 6500,
+    grossMarginPercent: 28,
+    commissionPercent: 3,
+    visitCost: 60,
+    baseVisitCapacity: 100,
+    extraTechnicians: 0,
+    batteryPrice: 3000,
+    batteryGrossMarginPercent: 20,
+    batteryCommissionPercent: 3,
+    batteryAttachPercent: 15,
+    includeBatteryInLtv: false,
+    channels: {
+      meta: {
+        name: 'Meta',
+        investment: 4000,
+        leadRetentionPercent: 100,
+        rates: { contact: 55, booking: 30, visit: 70, close: 18 },
+        history: [[0, 0], [2000, 280], [4000, 500], [6000, 680], [8000, 840], [10000, 960]],
+      },
+      google: {
+        name: 'Google',
+        investment: 4000,
+        rates: { contact: 85, booking: 55, visit: 85, close: 30 },
+        history: [[0, 0], [2000, 55], [4000, 100], [6000, 135], [8000, 160], [10000, 160]],
+      },
+    },
+  };
+
+  function interpolateLeads(investment, history) {
+    const points = history;
+    if (investment <= points[0][0]) return points[0][1];
+    for (let index = 1; index < points.length; index += 1) {
+      const [upperInvestment, upperLeads] = points[index];
+      const [lowerInvestment, lowerLeads] = points[index - 1];
+      if (investment <= upperInvestment) {
+        const share = (investment - lowerInvestment) / (upperInvestment - lowerInvestment);
+        return lowerLeads + share * (upperLeads - lowerLeads);
+      }
+    }
+    return points[points.length - 1][1];
+  }
+
+  function calculateChannel(channel, availableCapacity, visitCost, contribution) {
+    const interpolatedLeads = interpolateLeads(channel.investment, channel.history);
+    const leadRetentionPercent = channel.leadRetentionPercent == null ? 100 : channel.leadRetentionPercent;
+    const leads = interpolatedLeads * leadRetentionPercent / 100;
+    const contacts = leads * channel.rates.contact / 100;
+    const bookings = contacts * channel.rates.booking / 100;
+    const requestedVisits = bookings * channel.rates.visit / 100;
+    const realizedVisits = Math.min(requestedVisits, Math.max(0, availableCapacity));
+    const sales = realizedVisits * channel.rates.close / 100;
+    const adCac = sales > 0 ? channel.investment / sales : null;
+    const realCac = sales > 0 ? (channel.investment + realizedVisits * visitCost) / sales : null;
+    const visitsPerSale = sales > 0 ? realizedVisits / sales : null;
+    const visitValue = contribution * channel.rates.close / 100 - visitCost;
+    const cpl = interpolatedLeads > 0 ? channel.investment / interpolatedLeads : null;
+
+    return {
+      ...channel,
+      interpolatedLeads,
+      leadRetentionPercent,
+      leads,
+      contacts,
+      bookings,
+      requestedVisits,
+      realizedVisits,
+      lostVisits: requestedVisits - realizedVisits,
+      sales,
+      cpl,
+      adCac,
+      realCac,
+      ltvToCac: realCac ? contribution / realCac : null,
+      visitsPerSale,
+      visitValue,
+    };
+  }
+
+  function calculateModel(inputs) {
+    const solarContribution = inputs.installationPrice * (inputs.grossMarginPercent - inputs.commissionPercent) / 100;
+    const batteryContribution = inputs.batteryPrice * (inputs.batteryGrossMarginPercent - inputs.batteryCommissionPercent) / 100;
+    const expectedBatteryContribution = batteryContribution * inputs.batteryAttachPercent / 100;
+    const customerLtv = solarContribution + (inputs.includeBatteryInLtv ? expectedBatteryContribution : 0);
+    const capacity = inputs.baseVisitCapacity + inputs.extraTechnicians * 50;
+    const initialGoogle = calculateChannel(inputs.channels.google, capacity, inputs.visitCost, customerLtv);
+    const initialMeta = calculateChannel(inputs.channels.meta, Math.max(0, capacity - initialGoogle.realizedVisits), inputs.visitCost, customerLtv);
+    const channels = { meta: initialMeta, google: initialGoogle };
+    const sales = initialMeta.sales + initialGoogle.sales;
+    const realizedVisits = initialMeta.realizedVisits + initialGoogle.realizedVisits;
+    const requestedVisits = initialMeta.requestedVisits + initialGoogle.requestedVisits;
+    const adSpend = inputs.channels.meta.investment + inputs.channels.google.investment;
+    const totalAdCac = sales > 0 ? adSpend / sales : null;
+    const totalRealCac = sales > 0 ? (adSpend + realizedVisits * inputs.visitCost) / sales : null;
+    const ltvToCac = totalRealCac ? customerLtv / totalRealCac : null;
+
+    return {
+      contribution: solarContribution,
+      batteryContribution,
+      expectedBatteryContribution,
+      customerLtv,
+      capacity,
+      channels,
+      totals: {
+        leads: initialMeta.leads + initialGoogle.leads,
+        contacts: initialMeta.contacts + initialGoogle.contacts,
+        bookings: initialMeta.bookings + initialGoogle.bookings,
+        requestedVisits,
+        realizedVisits,
+        lostVisits: requestedVisits - realizedVisits,
+        sales,
+        adSpend,
+        adCac: totalAdCac,
+        realCac: totalRealCac,
+        ltvToCac,
+        visitsPerSale: sales > 0 ? realizedVisits / sales : null,
+        capacityUsedPercent: capacity > 0 ? realizedVisits / capacity * 100 : 0,
+      },
+      modelRates: { meta: initialMeta.rates, google: initialGoogle.rates },
+    };
+  }
+
+  function createOwnPlanInputs() {
+    const inputs = structuredClone(DEFAULT_INPUTS);
+    inputs.channels.meta.investment = 4800;
+    inputs.channels.meta.leadRetentionPercent = 80;
+    inputs.channels.meta.rates = { contact: 80, booking: 40, visit: 75, close: 22 };
+    inputs.extraTechnicians = 1;
+    return inputs;
+  }
+
+  root.SolDeCasaModel = { DEFAULT_INPUTS, interpolateLeads, calculateModel, createOwnPlanInputs };
+})(globalThis);
+</script>
+  <script>(function startStandaloneCalculator() {
+  const appRoot = document.getElementById('standalone-app');
+  const model = globalThis.SolDeCasaModel;
+  const caseResult = model.calculateModel(model.DEFAULT_INPUTS);
+  let inputs = structuredClone(model.DEFAULT_INPUTS);
+  const formatMoney = (value, digits = 0) => value == null ? '—' : new Intl.NumberFormat('es-CR', { style: 'currency', currency: 'USD', maximumFractionDigits: digits, minimumFractionDigits: digits }).format(value);
+  const formatCount = (value, digits = 1) => new Intl.NumberFormat('es-CR', { maximumFractionDigits: digits, minimumFractionDigits: digits }).format(value);
+  const percentField = (title, channel, rate) => `<label class="solo-field"><span>${title}</span><span class="solo-input"><input type="number" min="0" max="100" step="1" data-channel="${channel}" data-rate="${rate}" value="${inputs.channels[channel].rates[rate]}"><b>%</b></span></label>`;
+  const channelFields = (key) => {
+    const channel = inputs.channels[key];
+    return `<section class="solo-channel"><h3><i class="solo-dot solo-dot--${key}"></i>${channel.name}</h3><label class="solo-field"><span>Inversión mensual · USD</span><input type="range" min="0" max="10000" step="100" data-investment="${key}" value="${channel.investment}"><b class="solo-money">${formatMoney(channel.investment)}</b><small>Interpolación histórica hasta $10.000</small></label>${key==='meta'?`<label class="solo-field"><span>Leads que pasan el filtro</span><input data-retention="meta" type="number" min="0" max="100" value="${channel.leadRetentionPercent}"><small>100 % base; el plan propio supone retener 80 %.</small></label>`:''}<div class="solo-rates">${percentField('Contacto',key,'contact')}${percentField('Agenda',key,'booking')}${percentField('Visita realizada',key,'visit')}${percentField('Cierre',key,'close')}</div></section>`;
+  };
+  const funnelSvg = (result) => {
+    const stages = [['leads','Leads'],['contacts','Contactos'],['bookings','Agendas'],['realizedVisits','Visitas hechas'],['sales','Ventas']];
+    const maximum = Math.max(...stages.flatMap(([key]) => [result.channels.meta[key], result.channels.google[key]]), 1);
+    return `<svg viewBox="0 0 720 300" role="img" aria-label="Funnel comparado por canal">${stages.map(([key,label],i) => { const y=12+i*56, a=result.channels.meta[key], b=result.channels.google[key], aw=a/maximum*455, bw=b/maximum*455; return `<text x="0" y="${y+12}" class="svg-label">${label}</text><rect x="132" y="${y}" width="${aw}" height="13" rx="7" fill="#e8a51b"/><text x="${Math.min(140+aw,680)}" y="${y+11}" class="svg-number">${formatCount(a)}</text><rect x="132" y="${y+20}" width="${bw}" height="13" rx="7" fill="#43a395"/><text x="${Math.min(140+bw,680)}" y="${y+31}" class="svg-number">${formatCount(b)}</text>`; }).join('')}</svg><div class="solo-legend"><span><i class="solo-dot solo-dot--meta"></i>Meta</span><span><i class="solo-dot solo-dot--google"></i>Google</span><span class="solo-muted">Cada etapa usa la tasa sobre la anterior.</span></div>`;
+  };
+  const efficiencySvg = (result) => {
+    const max = Math.max(result.channels.meta.realCac || 0, result.channels.google.realCac || 0, 1);
+    return `<svg viewBox="0 0 650 240" role="img" aria-label="CPL comparado con CAC real">${['meta','google'].map((key,i)=>{ const c=result.channels[key], y=27+i*105, cpl=(c.cpl||0)/max*370, cac=(c.realCac||0)/max*370; return `<text x="0" y="${y+10}" class="svg-label">${c.name}</text><text x="75" y="${y+8}" class="svg-small">CPL</text><rect x="132" y="${y-8}" width="${cpl}" height="18" rx="9" fill="${key==='meta'?'#e8a51b':'#43a395'}" opacity=".5"/><text x="${Math.min(140+cpl,580)}" y="${y+7}" class="svg-number">${formatMoney(c.cpl)}</text><text x="75" y="${y+47}" class="svg-small">CAC real</text><rect x="132" y="${y+30}" width="${cac}" height="18" rx="9" fill="${key==='meta'?'#e8a51b':'#43a395'}"/><text x="${Math.min(140+cac,580)}" y="${y+45}" class="svg-number">${formatMoney(c.realCac)}</text>`;}).join('')}</svg><div class="solo-legend"><span>El CAC real incluye anuncios y visitas realizadas.</span></div>`;
+  };
+  const capacitySvg = (result) => {
+    const cap = result.capacity;
+    const baseCapacity = inputs.baseVisitCapacity;
+    const max = Math.max(cap * 1.2, result.totals.requestedVisits, 1);
+    const top = 18;
+    const bottom = 218;
+    const chartHeight = bottom - top;
+    const y = (value) => bottom - value / max * chartHeight;
+    const capY = y(cap);
+    const baseY = y(baseCapacity);
+    const baseLine = cap > baseCapacity
+      ? `<line x1="70" x2="630" y1="${baseY}" y2="${baseY}" stroke="#789185" stroke-width="1.5" stroke-dasharray="2 5"/><text x="75" y="${baseY-8}" class="svg-small">Base ${formatCount(baseCapacity,0)}</text>`
+      : '';
+    const capacityLabel = cap > baseCapacity ? `Capacidad efectiva ${formatCount(cap,0)}` : `Capacidad ${formatCount(cap,0)}`;
+    const grid = [0,.25,.5,.75,1].map((ratio) => {
+      const gridY = bottom - chartHeight * ratio;
+      return `<line x1="70" x2="630" y1="${gridY}" y2="${gridY}" stroke="#dbe4dd"/><text x="4" y="${gridY+4}" class="svg-small">${formatCount(max*ratio,0)}</text>`;
+    }).join('');
+    const bars = ['meta','google'].map((key,index) => {
+      const channel = result.channels[key];
+      const x = 180 + index * 230;
+      const requestedY = y(channel.requestedVisits);
+      const realizedY = y(channel.realizedVisits);
+      return `<rect x="${x}" y="${requestedY}" width="52" height="${bottom-requestedY}" rx="9" fill="#d8a443" opacity=".48"/><rect x="${x+60}" y="${realizedY}" width="52" height="${bottom-realizedY}" rx="9" fill="${key==='meta'?'#e8a51b':'#43a395'}"/><text x="${x+8}" y="${Math.max(requestedY-8,13)}" class="svg-number">${formatCount(channel.requestedVisits)}</text><text x="${x+61}" y="${Math.max(realizedY-8,13)}" class="svg-number">${formatCount(channel.realizedVisits)}</text><text x="${x+16}" y="245" class="svg-label">${channel.name}</text>`;
+    }).join('');
+    const capacityLegend = cap > baseCapacity
+      ? `<span><i class="solo-line-key solo-line-key--base"></i>Capacidad base ${formatCount(baseCapacity,0)}</span><span><i class="solo-line-key"></i>Capacidad efectiva ${formatCount(cap,0)}</span>`
+      : `<span><i class="solo-line-key"></i>Capacidad base ${formatCount(baseCapacity,0)}</span>`;
+    return `<svg viewBox="0 0 650 265" role="img" aria-label="Visitas solicitadas y realizadas frente a capacidad"><line x1="70" x2="630" y1="${capY}" y2="${capY}" stroke="#c4553b" stroke-width="2" stroke-dasharray="6 5"/>${baseLine}<text x="505" y="${capY-8}" class="svg-small">${capacityLabel}</text>${grid}${bars}</svg><div class="solo-legend"><span><i class="solo-bar-key"></i>Solicitadas</span><span><i class="solo-dot solo-dot--google"></i>Realizadas</span>${capacityLegend}<span class="solo-muted">Las visitas que no caben no generan ventas.</span></div>`;
+  };
+  function render() {
+    const result=model.calculateModel(inputs), totals=result.totals;
+    const ratioTone=totals.ltvToCac==null||totals.ltvToCac<1?'low':totals.ltvToCac<3?'mid':'good';
+    const lost=totals.lostVisits>0;
+    appRoot.innerHTML=`<section class="solo-hero" id="inicio"><div><p class="solo-eyebrow">Calculadora Nivel 2 · datos del caso</p><h1>La economía detrás de cada visita.</h1><p>Explora inversión, conversión y capacidad. El modelo muestra cada cálculo con las entradas actuales.</p></div><div class="solo-actions"><button class="solo-reset" id="own-plan" type="button">Cargar plan propio</button><button class="solo-reset" id="reset-case" type="button">Restaurar datos del caso ↺</button></div></section><section class="solo-summary"><article><span>Ventas estimadas</span><strong>${formatCount(totals.sales,2)}</strong><small>${formatCount(totals.leads)} leads combinados</small></article><article><span>CAC real combinado</span><strong>${formatMoney(totals.realCac,2)}</strong><small>Anuncios + visitas realizadas</small></article><article class="solo-ratio solo-ratio--${ratioTone}"><span>LTV:CAC</span><strong>${formatCount(totals.ltvToCac,2)}x</strong><small>Contribución por instalación ÷ CAC real</small></article><article><span>Capacidad usada</span><strong>${formatCount(totals.capacityUsedPercent)}%</strong><small>${formatCount(totals.realizedVisits)} de ${formatCount(result.capacity,0)} visitas</small></article></section>${lost?`<p class="solo-alert">Se perderían ${formatCount(totals.lostVisits)} visitas. Google se atiende primero; las visitas no realizadas no producen ventas.</p>`:''}<section class="solo-trap"><div><small>Con los datos del caso</small><h2>Lead de Meta más barato.<br>Cliente Meta más caro.</h2><p>CPL: ${formatMoney(caseResult.channels.meta.cpl,2)} frente a ${formatMoney(caseResult.channels.google.cpl,2)}. CAC real: ${formatMoney(caseResult.channels.meta.realCac,2)} frente a ${formatMoney(caseResult.channels.google.realCac,2)}.</p></div><strong>+${formatCount((caseResult.channels.meta.realCac/caseResult.channels.google.realCac-1)*100,0)}%<span> CAC real Meta</span></strong></section><div class="solo-layout"><aside class="solo-controls"><h2>Entradas del modelo</h2><p>Los cambios se reflejan al instante. Tasas en el mismo mes.</p>${channelFields('meta')}${channelFields('google')}<section class="solo-channel"><h3>Precio, capacidad y batería</h3><div class="solo-rates"><label class="solo-field"><span>Precio instalación · USD</span><input data-model-field="installationPrice" type="number" min="1000" step="100" value="${inputs.installationPrice}"></label><label class="solo-field"><span>Margen bruto · %</span><input data-model-field="grossMarginPercent" type="number" min="0" max="100" value="${inputs.grossMarginPercent}"></label><label class="solo-field"><span>Comisión · %</span><input data-model-field="commissionPercent" type="number" min="0" max="50" value="${inputs.commissionPercent}"></label><label class="solo-field"><span>Costo visita · USD</span><input data-model-field="visitCost" type="number" min="0" step="5" value="${inputs.visitCost}"></label><label class="solo-field"><span>Capacidad base · visitas</span><input data-model-field="baseVisitCapacity" type="number" min="0" step="10" value="${inputs.baseVisitCapacity}"></label><label class="solo-field"><span>Técnicos extra activos</span><select data-model-field="extraTechnicians"><option value="0" ${inputs.extraTechnicians===0?'selected':''}>0</option><option value="1" ${inputs.extraTechnicians===1?'selected':''}>1</option><option value="2" ${inputs.extraTechnicians===2?'selected':''}>2</option></select></label><label class="solo-field"><span>Adhesión de batería · % [SUPUESTO]</span><input data-model-field="batteryAttachPercent" type="number" min="0" max="100" value="${inputs.batteryAttachPercent}"></label><label class="solo-field"><span>Precio batería · USD</span><input data-model-field="batteryPrice" type="number" min="0" step="100" value="${inputs.batteryPrice}"></label></div><label class="solo-checkbox"><input data-model-field="includeBatteryInLtv" type="checkbox" ${inputs.includeBatteryInLtv?'checked':''}><span>Incluir contribución esperada de batería en LTV:CAC</span></label><small>La prueba observó 3 de 20 adhesiones. La extrapolación y sus fechas de caja no están validadas.</small></section></aside><div class="solo-results"><section class="solo-chart"><div class="solo-chart-heading"><h2>De lead a venta</h2><span>Funnel comparado por canal</span></div>${funnelSvg(result)}</section><section class="solo-chart"><div class="solo-chart-heading"><h2>El costo completo</h2><span>CPL frente a CAC real</span></div>${efficiencySvg(result)}</section><section class="solo-chart"><div class="solo-chart-heading"><h2>Demanda y capacidad</h2><span>La línea roja marca el límite</span></div>${capacitySvg(result)}</section><section class="solo-chart"><div class="solo-chart-heading"><h2>Resultados por canal</h2><span>Fórmula CAC real = (anuncios + $60 × visitas realizadas) ÷ ventas.</span></div><div class="solo-table-wrap"><table><thead><tr><th>Canal</th><th>Leads históricos</th><th>Leads tras filtro</th><th>Contactos</th><th>Agendas</th><th>Visitas pedidas</th><th>Realizadas</th><th>Ventas</th><th>CPL bruto</th><th>CAC anuncios</th><th>CAC real</th><th>LTV:CAC</th></tr></thead><tbody>${['meta','google'].map(key=>{const c=result.channels[key];return `<tr><th>${c.name}</th><td>${formatCount(c.interpolatedLeads)}</td><td>${formatCount(c.leads)}</td><td>${formatCount(c.contacts)}</td><td>${formatCount(c.bookings)}</td><td>${formatCount(c.requestedVisits)}</td><td>${formatCount(c.realizedVisits)}</td><td>${formatCount(c.sales)}</td><td>${formatMoney(c.cpl)}</td><td>${formatMoney(c.adCac)}</td><td>${formatMoney(c.realCac)}</td><td>${formatCount(c.ltvToCac,2)}x</td></tr>`}).join('')}</tbody></table></div><p>Contribución por instalación: ${formatMoney(result.contribution,2)} = precio × (margen bruto − comisión). Los costos fijos no se incluyen en CAC. Las ventas fraccionarias son expectativas del embudo.</p></section></div></div>`;
+    appRoot.querySelector('#reset-case').addEventListener('click',()=>{inputs=structuredClone(model.DEFAULT_INPUTS);render()});
+    appRoot.querySelector('#own-plan').addEventListener('click',()=>{inputs=model.createOwnPlanInputs();render()});
+    appRoot.querySelectorAll('[data-investment]').forEach((input)=>input.addEventListener('change',(event)=>{const key=event.target.dataset.investment;inputs.channels[key].investment=Number(event.target.value);render()}));
+    appRoot.querySelectorAll('[data-channel][data-rate]').forEach((input)=>input.addEventListener('change',(event)=>{inputs.channels[event.target.dataset.channel].rates[event.target.dataset.rate]=Math.max(0,Math.min(100,Number(event.target.value)));render()}));
+    appRoot.querySelectorAll('[data-retention]').forEach((input)=>input.addEventListener('change',(event)=>{inputs.channels[event.target.dataset.retention].leadRetentionPercent=Math.max(0,Math.min(100,Number(event.target.value)));render()}));
+    appRoot.querySelectorAll('[data-model-field]').forEach((input)=>input.addEventListener('change',(event)=>{const field=event.target.dataset.modelField;if(event.target.type==='checkbox'){inputs[field]=event.target.checked;}else{const minimum=event.target.min===''?-Infinity:Number(event.target.min),maximum=event.target.max===''?Infinity:Number(event.target.max);inputs[field]=Math.max(minimum,Math.min(maximum,Number(event.target.value)));}render()}));
+  }
+  render();
+})();
+</script>
+</body>
+</html>
