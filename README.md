@@ -24,7 +24,7 @@ Vite muestra la dirección local. El mock vive en `http://127.0.0.1:3001/solicit
 
 La ruta `/calculadora` contiene el Nivel 2 interactivo. El HTML autónomo se genera con `npm run build:standalone` en `nivel-2-autonomo.html`; puede abrirse directamente en un navegador y comparte el modelo de cálculo fuente `src/features/unit-economics/unit-economics-model.js`.
 
-`npm run build` construye la app y vuelve a generar el HTML autónomo. La calculadora no usa Google Sheets.
+`npm run build` construye la app y vuelve a generar el HTML autónomo. La calculadora no usa Google Sheets. También muestra un resultado operativo mensual de run-rate que descuenta anuncios, visitas, costos fijos y técnicos activos; no equivale a una proyección de caja.
 
 ## Documentación del modelo
 

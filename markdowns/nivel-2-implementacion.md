@@ -20,6 +20,9 @@ Fórmulas en cada canal:
 - `CAC anuncios = inversión ÷ ventas`; `CAC real = (inversión + costo visita × visitas realizadas) ÷ ventas`.
 - `LTV:CAC = contribución por venta ÷ CAC real`. LTV de base es una sola instalación, según el caso.
 - `valor de visita = tasa de cierre × contribución − costo de visita`.
+- `resultado operativo mensual = ventas × contribución solar − anuncios − visitas realizadas × costo de visita − costos fijos − costo de técnicos extra activos`.
+
+El resultado operativo es un run-rate mensual: excluye el desfase de caja y no proyecta el mes de capacitación. Costos fijos base: $18.000; cada técnico extra cuesta $1.800 al mes desde su contratación y añade 50 visitas de capacidad desde el mes siguiente. La calculadora permite editar costos fijos y costo mensual por técnico.
 
 El semáforo señala bajo 1x, de 1x a menos de 3x y 3x o más. En el caso base, Meta tiene CPL $8 y CAC real $718,13; Google tiene CPL $40 y CAC real $535,54. Por eso el CPL menor de Meta no equivale a menor costo de adquisición del cliente. La vista distingue leads históricos interpolados y leads que pasan el filtro; el CPL usa leads brutos.
 
@@ -27,7 +30,7 @@ El semáforo señala bajo 1x, de 1x a menos de 3x y 3x o más. En el caso base, 
 
 El control de adhesión inicia en 15 %, observado en 3 de 20 clientes. Extrapolarlo al futuro es **[SUPUESTO]**. La batería aporta `$3.000 × (20 % − 3 %) = $510` por adhesión; la contribución esperada se muestra por separado. La casilla para incluirla en LTV:CAC inicia desmarcada, de modo que los controles base sigan reflejando LTV solar de $1.625. No se proyecta caja de batería porque faltan las fechas de cobro y pago.
 
-La capacidad adicional se calcula como 50 visitas por técnico extra activo. Es un modelo de run-rate; cada contratación empieza a aportar capacidad al mes siguiente y cuesta $1.800 al mes desde su contratación. La gráfica conserva una referencia visual de 100 visitas de capacidad base y añade la línea de capacidad efectiva al usar técnicos extra. La calculadora no representa el mes de capacitación como una proyección de caja. El preset «Ver plan propio auditado» carga Meta $4.800, 80 % de retención tras filtro, las tasas supuestas del plan y un técnico extra; no introduce cifras de resultados, que salen del mismo modelo recalculado.
+La capacidad adicional se calcula como 50 visitas por técnico extra activo. Es un modelo de run-rate; cada contratación empieza a aportar capacidad al mes siguiente y cuesta $1.800 al mes desde su contratación. La calculadora muestra el resultado operativo después de anuncios, visitas, costos fijos y técnicos activos. No representa el mes de capacitación como una proyección de caja. El preset «Ver plan propio auditado» carga Meta $4.800, 80 % de retención tras filtro, las tasas supuestas del plan y un técnico extra; no introduce cifras de resultados, que salen del mismo modelo recalculado.
 
 ## Landing y formulario de demostración
 

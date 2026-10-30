@@ -40,11 +40,13 @@ export function CalculatorControls({ inputs, onInputChange, onChannelInvestmentC
           <ControlField label="Capacidad base" help="Visitas al mes con el equipo actual" max={500} min={0} onChange={(event) => onInputChange('baseVisitCapacity', event)} step={10} suffix="visitas" value={inputs.baseVisitCapacity} />
           <label className="control-field">
             <span className="control-label">Técnicos extra activos</span>
-            <span className="control-help">+50 visitas desde el mes siguiente a cada contratación</span>
+            <span className="control-help">+{inputs.extraTechnicianCapacity} visitas desde el mes siguiente a cada contratación</span>
             <select onChange={(event) => onInputChange('extraTechnicians', { target: { value: event.target.value } })} value={inputs.extraTechnicians}>
               {[0, 1, 2].map((count) => <option key={count} value={count}>{count} {count === 1 ? 'técnico' : 'técnicos'}</option>)}
             </select>
           </label>
+          <ControlField label="Costos fijos mensuales" help="Dato del caso; no incluye anuncios ni visitas." max={100000} min={0} onChange={(event) => onInputChange('fixedMonthlyCosts', event)} step={500} suffix="USD" value={inputs.fixedMonthlyCosts} />
+          <ControlField label="Costo mensual por técnico extra" help="Se cobra desde la contratación." max={10000} min={0} onChange={(event) => onInputChange('technicianMonthlyCost', event)} step={100} suffix="USD" value={inputs.technicianMonthlyCost} />
         </div>
       </fieldset>
       <fieldset className="assumption-controls battery-controls">
@@ -55,7 +57,7 @@ export function CalculatorControls({ inputs, onInputChange, onChannelInvestmentC
           <ControlField label="Precio batería" max={10000} min={0} onChange={(event) => onInputChange('batteryPrice', event)} step={100} suffix="USD" value={inputs.batteryPrice} />
         </div>
         <label className="check-control">
-          <input checked={inputs.includeBatteryInLtv} onChange={(event) => onInputChange('includeBatteryInLtv', { target: { value: event.target.checked } })} type="checkbox" />
+          <input checked={inputs.includeBatteryInLtv} onChange={(event) => onInputChange('includeBatteryInLtv', event)} type="checkbox" />
           <span>Incluir contribución esperada de batería en LTV:CAC</span>
         </label>
       </fieldset>

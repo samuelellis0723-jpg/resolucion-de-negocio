@@ -209,7 +209,7 @@ h1, h2, h3, p { margin-top: 0; }
 .metric-tile--positive strong { color: #237560; }
 .metric-tile--watch strong { color: #ac7710; }
 .metric-tile--negative strong { color: #b04731; }
-.economics-strip { display: grid; grid-template-columns: repeat(4,1fr); margin-top: 13px; padding: 14px 0; border-bottom: 1px solid #bdccc1; }
+.economics-strip { display: grid; grid-template-columns: repeat(5,minmax(0,1fr)); margin-top: 13px; padding: 14px 0; border-bottom: 1px solid #bdccc1; }
 .economics-strip > div { display: grid; gap: 6px; padding: 0 12px; border-right: 1px solid #d5dfd5; }
 .economics-strip > div:first-child { padding-left: 0; }
 .economics-strip > div:last-child { border: 0; }
@@ -217,6 +217,7 @@ h1, h2, h3, p { margin-top: 0; }
 .economics-strip strong { color: var(--forest); font-family: var(--display); font-size: 15px; letter-spacing: -.03em; }
 .economics-strip strong small { color: #6d7d73; font-family: 'DM Sans',sans-serif; font-size: 8px; font-weight: 500; }
 .economics-strip small { color: #879188; font-size: 7px; line-height: 1.4; }
+.economics-strip .operating-result--negative { color: #b04731; }
 .capacity-warning, .assumption-banner { margin-top: 13px; padding: 12px 14px; background: #f5e1d7; color: #873c2b; font-size: 10px; line-height: 1.5; }
 .assumption-banner { background: #f8edc8; color: #785b11; }
 .channel-trap { display: grid; grid-template-columns: 45px 1fr auto; gap: 15px; align-items: center; margin: 29px 0 33px; padding: 21px 22px; background: var(--forest); color: var(--white); }
@@ -279,11 +280,14 @@ h1, h2, h3, p { margin-top: 0; }
   .metric-grid { grid-template-columns: repeat(2,1fr); }
   .metric-tile:nth-child(2) { border-right: 0; }
   .metric-tile:nth-child(-n+2) { border-bottom: 1px solid #d5dfd5; }
-  .economics-strip { grid-template-columns: repeat(2,1fr); gap: 12px 0; }
-  .economics-strip > div:nth-child(2) { border-right: 0; }
-  .economics-strip > div:nth-child(3) { padding-left: 0; }
+  .economics-strip { grid-template-columns: repeat(3,minmax(0,1fr)); gap: 12px 0; }
+  .economics-strip > div:nth-child(3n) { border-right: 0; }
+  .economics-strip > div:nth-child(3n + 1) { padding-left: 0; }
 }
 @media (max-width: 760px) {
+  .economics-strip { grid-template-columns: repeat(2,minmax(0,1fr)); }
+  .economics-strip > div:nth-child(2n) { border-right: 0; }
+  .economics-strip > div:nth-child(2n + 1) { padding-left: 0; }
   .site-header { height: 68px; padding: 0 20px; }
   .brand-lockup { font-size: 17px; }
   .main-nav { gap: 15px; margin-left: auto; margin-right: 15px; }

@@ -1,5 +1,7 @@
 # Auditoría del Nivel 1 · Sol de Casa
 
+> **Vigencia:** auditoría histórica del Nivel 1. Se preparó antes de que la rama `samu` incorporara la app React/Vite y la calculadora del Nivel 2; las observaciones sobre la ausencia de código describen aquel corte y no el estado actual.
+
 ## Alcance
 
 Revisión documental y financiera del Nivel 1, siguiendo el contexto canónico actualizado. Se leyeron `marckdowns/estructuraBase.md`, `marckdowns/reglas.md`, `marckdowns/Bpracticas.md`, `marckdowns/sol-de-casa-contexto-canonico.md` y los tres entregables previos. El Excel `outputs/sol-de-casa-nivel-1/sol-de-casa-nivel-1.xlsx` se consultó únicamente en lectura: tiene pestañas `Supuestos` y `Resultados`, con cálculos enlazados. No se modificaron los originales ni el Excel.

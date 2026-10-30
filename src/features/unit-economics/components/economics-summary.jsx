@@ -36,6 +36,7 @@ export function EconomicsSummary({ result, inputs }) {
         <div><span>Adquisición en anuncios</span><strong>{formatMoney(totals.adCac, 2)} <small>por venta</small></strong><small>{formatMoney(totals.adSpend)} de inversión combinada</small></div>
         <div><span>Visitas por venta</span><strong>{formatNumber(totals.visitsPerSale, 2)}</strong><small>Usa visitas realizadas, no solicitudes.</small></div>
         <div><span>Contribución esperada de batería [SUPUESTO]</span><strong>{formatMoney(result.expectedBatteryContribution, 2)}</strong><small>{formatNumber(inputs.batteryAttachPercent, 0)}% × {formatMoney(result.batteryContribution)} por adhesión</small></div>
+        <div><span>Resultado operativo estimado · run-rate</span><strong className={totals.monthlyOperatingResult < 0 ? 'operating-result--negative' : ''}>{formatMoney(totals.monthlyOperatingResult, 2)}</strong><small>Contribución − anuncios − visitas − costos fijos − técnicos activos</small></div>
       </section>
       {isOverCapacity && <div className="capacity-warning" role="alert"><strong>Se perderían {formatNumber(totals.lostVisits)} visitas.</strong> Google recibe capacidad primero; las solicitudes Meta no atendidas no generan ventas.</div>}
       {inputs.includeBatteryInLtv && <div className="assumption-banner"><strong>Supuesto activo:</strong> LTV:CAC incluye {formatMoney(result.expectedBatteryContribution, 2)} de contribución esperada de batería por instalación solar; el 15 % proviene de una prueba de 3/20 y no se valida como tasa futura.</div>}

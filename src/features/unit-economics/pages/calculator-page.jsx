@@ -15,9 +15,10 @@ export function CalculatorPage() {
   const caseResult = useMemo(() => globalThis.SolDeCasaModel.calculateModel(createCaseInputs()), []);
 
   function handleInputChange(field, event) {
-    const value = event.target.value;
+    const { target } = event;
+    const value = target.type === 'checkbox' ? target.checked : target.value;
     setInputs((current) => {
-      if (typeof current[field] === 'boolean') return { ...current, [field]: Boolean(value) };
+      if (typeof current[field] === 'boolean') return { ...current, [field]: value };
       const min = event.target.min == null || event.target.min === '' ? -Infinity : Number(event.target.min);
       const max = event.target.max == null || event.target.max === '' ? Infinity : Number(event.target.max);
       return { ...current, [field]: Math.min(max, Math.max(min, Number(value))) };

@@ -1,11 +1,16 @@
 (function attachSolDeCasaModel(root) {
+  const EXTRA_VISITS_PER_TECHNICIAN = 50;
+
   const DEFAULT_INPUTS = {
     installationPrice: 6500,
     grossMarginPercent: 28,
     commissionPercent: 3,
     visitCost: 60,
+    fixedMonthlyCosts: 18000,
+    technicianMonthlyCost: 1800,
     baseVisitCapacity: 100,
     extraTechnicians: 0,
+    extraTechnicianCapacity: EXTRA_VISITS_PER_TECHNICIAN,
     batteryPrice: 3000,
     batteryGrossMarginPercent: 20,
     batteryCommissionPercent: 3,
@@ -82,7 +87,7 @@
     const batteryContribution = inputs.batteryPrice * (inputs.batteryGrossMarginPercent - inputs.batteryCommissionPercent) / 100;
     const expectedBatteryContribution = batteryContribution * inputs.batteryAttachPercent / 100;
     const customerLtv = solarContribution + (inputs.includeBatteryInLtv ? expectedBatteryContribution : 0);
-    const capacity = inputs.baseVisitCapacity + inputs.extraTechnicians * 50;
+    const capacity = inputs.baseVisitCapacity + inputs.extraTechnicians * inputs.extraTechnicianCapacity;
     const initialGoogle = calculateChannel(inputs.channels.google, capacity, inputs.visitCost, customerLtv);
     const initialMeta = calculateChannel(inputs.channels.meta, Math.max(0, capacity - initialGoogle.realizedVisits), inputs.visitCost, customerLtv);
     const channels = { meta: initialMeta, google: initialGoogle };
@@ -90,6 +95,12 @@
     const realizedVisits = initialMeta.realizedVisits + initialGoogle.realizedVisits;
     const requestedVisits = initialMeta.requestedVisits + initialGoogle.requestedVisits;
     const adSpend = inputs.channels.meta.investment + inputs.channels.google.investment;
+    const technicianCosts = inputs.extraTechnicians * inputs.technicianMonthlyCost;
+    const monthlyOperatingResult = sales * solarContribution
+      - adSpend
+      - realizedVisits * inputs.visitCost
+      - inputs.fixedMonthlyCosts
+      - technicianCosts;
     const totalAdCac = sales > 0 ? adSpend / sales : null;
     const totalRealCac = sales > 0 ? (adSpend + realizedVisits * inputs.visitCost) / sales : null;
     const ltvToCac = totalRealCac ? customerLtv / totalRealCac : null;
@@ -101,6 +112,10 @@
       customerLtv,
       capacity,
       channels,
+      operatingCosts: {
+        fixed: inputs.fixedMonthlyCosts,
+        technicians: technicianCosts,
+      },
       totals: {
         leads: initialMeta.leads + initialGoogle.leads,
         contacts: initialMeta.contacts + initialGoogle.contacts,
@@ -110,6 +125,7 @@
         lostVisits: requestedVisits - realizedVisits,
         sales,
         adSpend,
+        monthlyOperatingResult,
         adCac: totalAdCac,
         realCac: totalRealCac,
         ltvToCac,
