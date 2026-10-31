@@ -10,6 +10,7 @@ export function SiteHeader() {
       <nav className="main-nav" aria-label="Navegación principal">
         <a href="/#como-funciona">Cómo funciona</a>
         <NavLink to="/calculadora">Calculadora</NavLink>
+        <NavLink to="/simulador-caja">Caja 24 meses</NavLink>
       </nav>
       <a className="header-cta" href="/#solicitar">Quiero cotizar <span aria-hidden="true">↗</span></a>
     </header>

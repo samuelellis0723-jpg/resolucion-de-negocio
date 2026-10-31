@@ -350,6 +350,8 @@ h1, h2, h3, p { margin-top: 0; }
 }
 @media (max-width: 420px) {
   .main-nav a:first-child { display: none; }
+  .main-nav { gap: 10px; margin-right: 0; }
+  .header-cta { display: none; }
   .hero h1 { font-size: 47px; }
   .hero-art-wrap { min-height: 310px; }
   .art-label { top: 25px; }

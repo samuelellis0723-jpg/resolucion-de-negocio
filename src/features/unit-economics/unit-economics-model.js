@@ -48,7 +48,9 @@
   }
 
   function calculateChannel(channel, availableCapacity, visitCost, contribution) {
-    const interpolatedLeads = interpolateLeads(channel.investment, channel.history);
+    const interpolatedLeads = channel.leadMethod === 'constant-cpl'
+      ? channel.investment / channel.assumedCpl
+      : interpolateLeads(channel.investment, channel.history);
     const leadRetentionPercent = channel.leadRetentionPercent == null ? 100 : channel.leadRetentionPercent;
     const leads = interpolatedLeads * leadRetentionPercent / 100;
     const contacts = leads * channel.rates.contact / 100;

@@ -1,6 +1,6 @@
 # Sol de Casa · prototipo educativo
 
-Aplicación React/Vite con una landing ficticia, una calculadora financiera de Nivel 2 y un formulario conectado únicamente a una API JSON local de demostración.
+Aplicación React/Vite con una landing ficticia, una calculadora financiera de Nivel 2, un simulador de caja a 24 meses y un formulario conectado únicamente a una API JSON local de demostración.
 
 ## Inicio local
 
@@ -26,6 +26,12 @@ La ruta `/calculadora` contiene el Nivel 2 interactivo. El HTML autónomo se gen
 
 `npm run build` construye la app y vuelve a generar el HTML autónomo. La calculadora no usa Google Sheets. También muestra un resultado operativo mensual de run-rate que descuenta anuncios, visitas, costos fijos y técnicos activos; no equivale a una proyección de caja.
 
+## Simulador de caja · Nivel 3
+
+Abre `/simulador-caja` para comparar el plan actual, la agencia teórica, la agencia histórica y dos planes propios durante 24 meses. La tabla y los gráficos aplican los cobros y pagos del caso en sus meses correspondientes. Puedes editar las inversiones mensuales, el CPL teórico, la retención y tasas de Meta de los planes, y el mes y cantidad de técnicos extra. El CPL teórico, el filtro y sus tasas, la contratación y mantener la pauta constante durante 24 meses son **[SUPUESTO]** y se muestran como tales.
+
+El resultado marca si cada escenario conserva el piso de caja de $5.000 y si su inversión mensual cumple la regla de no bajar desde el mes 19. El simulador comparte el embudo del Nivel 2; no representa una oferta de crédito ni garantiza ventas. Lee [la implementación del Nivel 3](markdowns/nivel-3-implementacion.md) para fórmulas, supuestos y controles.
+
 ## Documentación del modelo
 
-Consulta [la implementación del Nivel 2](markdowns/nivel-2-implementacion.md), el [modelo auditado](markdowns/sol-de-casa-nivel-1-modelo.md) y la [auditoría](markdowns/auditoria-nivel-1.md).
+Consulta la [implementación del Nivel 3](markdowns/nivel-3-implementacion.md), [implementación del Nivel 2](markdowns/nivel-2-implementacion.md), el [modelo auditado](markdowns/sol-de-casa-nivel-1-modelo.md) y la [auditoría](markdowns/auditoria-nivel-1.md).
