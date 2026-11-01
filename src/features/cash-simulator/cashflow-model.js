@@ -81,6 +81,7 @@ function toModelInputs(plan, matureTechnicians) {
 
 export function projectCashScenario(plan, assumptions = CASH_ASSUMPTIONS) {
   const rows = [];
+  const displayLabel = plan.isCustomized ? `${plan.label} · editado` : plan.label;
   let endingCash = assumptions.openingCash;
   let previousSales = assumptions.monthZeroSales;
   let cumulativeSales = 0;
@@ -91,7 +92,8 @@ export function projectCashScenario(plan, assumptions = CASH_ASSUMPTIONS) {
 
   for (let month = 1; month <= assumptions.months; month += 1) {
     const hiredTechnicians = month >= plan.technicianHireMonth ? plan.extraTechnicians : 0;
-    const matureTechnicians = month > plan.technicianHireMonth ? plan.extraTechnicians : 0;
+    const capacityStartMonth = plan.technicianHireMonth + assumptions.hiringMonthCapacityDelay;
+    const matureTechnicians = month >= capacityStartMonth ? plan.extraTechnicians : 0;
     const model = calculateModel(toModelInputs(plan, matureTechnicians));
     const { totals, channels } = model;
     const adInvestment = plan.metaInvestment + plan.googleInvestment;
@@ -125,7 +127,7 @@ export function projectCashScenario(plan, assumptions = CASH_ASSUMPTIONS) {
     rows.push({
       month,
       scenarioId: plan.id,
-      scenarioName: plan.label,
+      scenarioName: displayLabel,
       metaInvestment: plan.metaInvestment,
       googleInvestment: plan.googleInvestment,
       adInvestment,
@@ -155,7 +157,7 @@ export function projectCashScenario(plan, assumptions = CASH_ASSUMPTIONS) {
     && minimumCash >= assumptions.minimumCash;
   return {
     id: plan.id,
-    label: plan.label,
+    label: displayLabel,
     note: plan.note,
     plan,
     rows,
@@ -175,11 +177,11 @@ export function projectCashScenarios(plans, assumptions = CASH_ASSUMPTIONS) {
 }
 
 export function updateScenario(scenarios, scenarioId, patch) {
-  return scenarios.map((item) => item.id === scenarioId ? { ...item, ...patch } : item);
+  return scenarios.map((item) => item.id === scenarioId ? { ...item, ...patch, isCustomized: true } : item);
 }
 
 export function updateMetaRate(scenarios, scenarioId, rateKey, value) {
   return scenarios.map((item) => item.id === scenarioId
-    ? { ...item, metaRates: { ...item.metaRates, [rateKey]: value } }
+    ? { ...item, metaRates: { ...item.metaRates, [rateKey]: value }, isCustomized: true }
     : item);
 }

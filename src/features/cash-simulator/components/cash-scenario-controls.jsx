@@ -28,10 +28,7 @@ export function CashScenarioControls({ scenarios, selectedId, onSelect, onChange
         <CashNumberField label="Google al mes" value={selected.googleInvestment} onChange={(value) => onChange(selected.id, { googleInvestment: value })} max={100000} step={200} suffix="USD" />
         <label className="cash-field">
           <span>Leads de Meta</span>
-          <select onChange={(event) => onChange(selected.id, { leadMethod: event.target.value })} value={selected.leadMethod}>
-            <option value="historical">Histórico interpolado</option>
-            <option value="constant-cpl">CPL constante [SUPUESTO]</option>
-          </select>
+          <span className="cash-readonly-field">{selected.leadMethod === 'constant-cpl' ? 'CPL constante [SUPUESTO]' : 'Histórico interpolado'}</span>
         </label>
         {selected.leadMethod === 'constant-cpl' && <CashNumberField label="CPL constante [SUPUESTO]" value={selected.assumedCpl} onChange={(value) => onChange(selected.id, { assumedCpl: value })} max={10000} min={1} step={1} suffix="USD" />}
         <CashNumberField label={`Leads Meta retenidos${selected.id.startsWith('own-') ? ' [SUPUESTO]' : ''}`} value={selected.metaLeadRetention} onChange={(value) => onChange(selected.id, { metaLeadRetention: value })} max={100} step={5} suffix="%" />
@@ -43,7 +40,7 @@ export function CashScenarioControls({ scenarios, selectedId, onSelect, onChange
       </div>
       <div className="cash-rule-note">
         <strong>Pauta mensual constante [SUPUESTO].</strong>
-        <span>El total no cae desde el mes 19. Los montos, el filtro, las tasas optimizadas y el mes de contratación son editables; afectan salidas mensuales, leads, ventas y capacidad.</span>
+        <span>El total no cae desde el mes 19. Los montos, el filtro, las tasas Meta supuestas y el mes de contratación son editables; afectan salidas mensuales, leads, ventas y capacidad.</span>
       </div>
       <p className="cash-fixed-note">Tasas Google, precio, costos variables, costos fijos, caja inicial y piso permanecen en los datos del caso.</p>
     </section>

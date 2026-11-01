@@ -348,6 +348,10 @@ h1, h2, h3, p { margin-top: 0; }
   .chart-method { margin-left: 0; flex-basis: 100%; }
   .chart-svg { min-width: 460px; }
 }
+@media (max-width: 600px) {
+  .main-nav { gap: clamp(8px, 2.5vw, 15px); margin-right: 0; }
+  .header-cta { display: none; }
+}
 @media (max-width: 420px) {
   .main-nav a:first-child { display: none; }
   .main-nav { gap: 10px; margin-right: 0; }

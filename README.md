@@ -35,3 +35,5 @@ El resultado marca si cada escenario conserva el piso de caja de $5.000 y si su 
 ## Documentación del modelo
 
 Consulta la [implementación del Nivel 3](markdowns/nivel-3-implementacion.md), [implementación del Nivel 2](markdowns/nivel-2-implementacion.md), el [modelo auditado](markdowns/sol-de-casa-nivel-1-modelo.md) y la [auditoría](markdowns/auditoria-nivel-1.md).
+
+La [auditoría final](markdowns/auditoria-final-sol-de-casa.md), [sensibilidad](markdowns/sensibilidad-final-nivel-3.md) y [presentación oral](markdowns/presentacion-oral-final.md) reúnen los resultados de la revisión final.

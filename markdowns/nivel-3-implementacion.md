@@ -4,7 +4,7 @@
 
 El simulador React se agrega en `/simulador-caja`. La landing, `/calculadora`, el formulario local y `nivel-2-autonomo.html` conservan sus rutas y función. Las conversiones, prioridades de capacidad e interpolación usan `SolDeCasaModel.calculateModel` de Nivel 2; la proyección de caja consume las visitas y ventas de ese modelo en cada mes. La agencia teórica configura un CPL constante en el canal de Meta del modelo compartido.
 
-La aplicación muestra cinco escenarios en paralelo: plan actual, agencia teórica ($8.000 en Meta a $8 CPL), agencia histórica ($8.000 en Meta con leads históricos), plan propio con filtro y técnico adicional y plan propio con filtro sin técnico. Los montos de pauta, modo de leads de Meta, retención, tasas de Meta y contratación se editan en el panel. El histórico de Google sigue la interpolación y su tope de 160 leads; al superar la última inversión de la tabla, el modelo mantiene el último dato histórico.
+La aplicación muestra cinco escenarios en paralelo: plan actual, agencia teórica ($8.000 en Meta a $8 CPL), agencia histórica ($8.000 en Meta con leads históricos), plan propio con filtro y técnico adicional y plan propio con filtro sin técnico. Los montos de pauta, CPL teórico, retención, tasas de Meta y contratación se editan en el panel. La fuente de leads está fijada por escenario para que las etiquetas conserven su significado; al editar entradas, la etiqueta indica “editado”. El histórico de Google sigue la interpolación y su tope de 160 leads; al superar la última inversión de la tabla, el modelo mantiene el último dato histórico.
 
 ## Datos del caso y supuestos
 

@@ -12,7 +12,7 @@ export function SiteHeader() {
         <NavLink to="/calculadora">Calculadora</NavLink>
         <NavLink to="/simulador-caja">Caja 24 meses</NavLink>
       </nav>
-      <a className="header-cta" href="/#solicitar">Quiero cotizar <span aria-hidden="true">↗</span></a>
+      <a className="header-cta" href="/#formulario-demo">Formulario demo <span aria-hidden="true">↗</span></a>
     </header>
   );
 }
