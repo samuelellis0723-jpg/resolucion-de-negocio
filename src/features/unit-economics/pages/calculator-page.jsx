@@ -1,5 +1,6 @@
 import { useMemo, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { AnalystPanel } from '@/features/economics-analyst/analyst-panel.jsx';
 import { CalculatorControls } from '@/features/unit-economics/components/calculator-controls.jsx';
 import { CapacityChart } from '@/features/unit-economics/components/capacity-chart.jsx';
 import { ChannelResultsTable } from '@/features/unit-economics/components/channel-results-table.jsx';
@@ -66,6 +67,7 @@ export function CalculatorPage() {
         <CalculatorControls inputs={inputs} onChannelInvestmentChange={handleChannelInvestmentChange} onChannelRateChange={handleChannelRateChange} onInputChange={handleInputChange} onLeadRetentionChange={handleLeadRetentionChange} />
         <div className="results-column">
           <EconomicsSummary inputs={inputs} result={result} />
+          <AnalystPanel inputs={inputs} result={result} />
           <ChannelTrap caseResult={caseResult} />
           <section className="chart-section">
             <div className="section-heading section-heading--compact"><div><p className="eyebrow">01 · Conversión</p><h2>De lead a venta</h2></div><p>La tasa de cada etapa se aplica a la anterior.</p></div>

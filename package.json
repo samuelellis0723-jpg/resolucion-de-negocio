@@ -8,7 +8,9 @@
     "mock:api": "json-server --watch db.json --host 127.0.0.1 --port 3001",
     "build": "vite build && npm run build:standalone",
     "preview": "vite preview --host 127.0.0.1",
-    "build:standalone": "node scripts/build-standalone.mjs"
+    "build:standalone": "node scripts/build-standalone.mjs",
+    "build:analyst-workflow": "node scripts/build-analyst-workflow.mjs",
+    "verify:analyst": "node scripts/verify-analyst.mjs"
   },
   "dependencies": {
     "react": "^19.0.0",

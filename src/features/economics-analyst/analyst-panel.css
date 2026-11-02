@@ -1,0 +1,39 @@
+.analyst-panel { margin: 28px 0; padding: 25px; border: 1px solid #b6c9ba; background: #f9f9f1; }
+.analyst-heading { display: flex; align-items: center; justify-content: space-between; gap: 18px; }
+.analyst-heading .eyebrow { margin-bottom: 8px; font-size: 10px; }
+.analyst-heading h2 { margin: 0; font-family: var(--display); font-size: 26px; letter-spacing: -.045em; }
+.analyst-case-label { color: #5c7265; font-size: 11px; }
+.analyst-intro, .analyst-footer { color: #53695e; font-size: 12px; line-height: 1.65; }
+.analyst-intro { margin: 15px 0; }
+.analyst-current-metrics { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 15px; margin: 0 0 22px; padding: 14px 0; border-top: 1px solid #d2ddcf; border-bottom: 1px solid #d2ddcf; }
+.analyst-current-metrics dt { color: #596f60; font-size: 10px; line-height: 1.5; }
+.analyst-current-metrics dd { margin: 4px 0 0; font-family: var(--display); font-size: 19px; font-weight: 600; overflow-wrap: anywhere; }
+.analyst-panel label { display: block; margin-bottom: 8px; color: var(--forest); font-size: 12px; font-weight: 700; }
+.analyst-panel textarea { width: 100%; min-height: 95px; padding: 12px; resize: vertical; border: 1px solid #9caf9f; border-radius: 0; background: #fffef8; color: var(--forest); font: inherit; font-size: 13px; line-height: 1.6; }
+.analyst-panel textarea:focus-visible { outline: 3px solid #d58a19; outline-offset: 3px; }
+.analyst-help, .analyst-snapshot { color: #5c7264; font-size: 11px; line-height: 1.6; }
+.analyst-help { margin: 8px 0 14px; }
+.analyst-actions { display: flex; flex-wrap: wrap; gap: 10px; }
+.analyst-status, .analyst-error, .analyst-stale { margin: 15px 0 0; padding: 12px; font-size: 12px; line-height: 1.6; }
+.analyst-status { background: #edf1e8; }
+.analyst-error { background: #f8e7df; color: #883a29; }
+.analyst-stale { background: #f8edc8; color: #705412; }
+.analyst-answer { margin-top: 19px; padding-top: 17px; border-top: 1px solid #bfcebd; }
+.analyst-snapshot { margin-bottom: 12px; }
+.analyst-question, .analyst-answer-text { font-size: 13px; line-height: 1.75; overflow-wrap: anywhere; }
+.analyst-answer-text { white-space: pre-wrap; }
+.analyst-footer { margin: 19px 0 0; }
+.analyst-footer strong { color: var(--forest); }
+@media (max-width: 1050px) {
+  .analyst-current-metrics { grid-template-columns: 1fr; gap: 12px; }
+}
+@media (max-width: 760px) {
+  .analyst-panel { padding: 20px 16px; }
+  .analyst-heading { align-items: flex-start; flex-direction: column; gap: 9px; }
+  .analyst-current-metrics { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .analyst-current-metrics dd { font-size: 17px; }
+}
+@media (max-width: 480px) {
+  .analyst-current-metrics { grid-template-columns: 1fr; }
+  .analyst-actions .button { width: 100%; }
+}
