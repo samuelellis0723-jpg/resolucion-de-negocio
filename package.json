@@ -10,7 +10,8 @@
     "preview": "vite preview --host 127.0.0.1",
     "build:standalone": "node scripts/build-standalone.mjs",
     "build:analyst-workflow": "node scripts/build-analyst-workflow.mjs",
-    "verify:analyst": "node scripts/verify-analyst.mjs"
+    "verify:analyst": "node scripts/verify-analyst.mjs",
+    "verify:referrals": "node scripts/verify-referrals.mjs"
   },
   "dependencies": {
     "react": "^19.0.0",

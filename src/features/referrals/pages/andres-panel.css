@@ -1,0 +1,66 @@
+.andres-panel { padding-top: 65px; padding-bottom: 100px; color: var(--forest); }
+.andres-panel__heading { display: flex; justify-content: space-between; align-items: end; gap: 30px; padding-bottom: 38px; border-bottom: 1px solid #bdcbbd; }
+.andres-panel__heading h1 { max-width: 750px; margin: 0; color: var(--forest-deep); font-family: Georgia, 'Times New Roman', serif; font-size: clamp(52px, 6vw, 79px); font-weight: 400; letter-spacing: -.065em; line-height: 1.02; }
+.andres-panel__heading > div > p:last-child { max-width: 610px; margin: 18px 0 0; color: #576e62; font-size: 13px; line-height: 1.65; }
+.andres-panel__heading > a { flex: 0 0 auto; }
+.andres-panel__section { padding-top: 74px; }
+.andres-panel__section-heading { margin-bottom: 24px; }
+.andres-panel__section-heading h2 { margin: 0; color: var(--forest-deep); font-family: Georgia, 'Times New Roman', serif; font-size: clamp(37px, 4.5vw, 59px); font-weight: 400; letter-spacing: -.06em; line-height: 1.08; }
+.andres-metric-grid { display: grid; grid-template-columns: repeat(4, minmax(0,1fr)); gap: 10px; }
+.andres-metric { min-height: 132px; display: flex; flex-direction: column; justify-content: space-between; padding: 18px; border-radius: 13px; background: #e8ece2; }
+.andres-metric:first-child { background: var(--forest); color: #fffef8; }
+.andres-metric span, .andres-cost-grid span, .andres-capacity span, .andres-projection-grid span { font-size: 11px; font-weight: 700; line-height: 1.4; }
+.andres-metric strong { font-family: var(--display); font-size: 38px; font-weight: 600; letter-spacing: -.06em; }
+.andres-panel__caption { max-width: 970px; margin: 17px 0 0; color: #5d7367; font-size: 11px; line-height: 1.7; }
+.andres-panel__economics, .andres-panel__projection { margin-top: 75px; padding-top: 74px; padding-bottom: 75px; border-radius: 20px; background: #e8ece2; }
+.andres-panel__economics, .andres-panel__projection { padding-right: clamp(22px, 4vw, 60px); padding-left: clamp(22px, 4vw, 60px); }
+.andres-cost-grid, .andres-projection-grid { display: grid; grid-template-columns: repeat(4, minmax(0,1fr)); gap: 10px; }
+.andres-cost-grid > div, .andres-projection-grid > div { min-height: 125px; display: flex; flex-direction: column; justify-content: space-between; gap: 10px; padding: 18px; background: var(--paper); }
+.andres-cost-grid strong, .andres-projection-grid strong { font-family: var(--display); font-size: clamp(23px, 2.5vw, 34px); font-weight: 600; letter-spacing: -.055em; font-variant-numeric: tabular-nums; }
+.andres-cost-grid__cac, .andres-projection-grid__total { background: var(--forest) !important; color: #fffef8; }
+.andres-cost-grid__cac strong { font-size: clamp(19px, 2.1vw, 29px); }
+.andres-alert { max-width: 1000px; margin: 20px 0 0; padding: 14px 17px; border-left: 3px solid var(--coral); background: #eed9c9; color: #633d2d; font-size: 12px; font-weight: 700; line-height: 1.55; }
+.andres-capacity { max-width: 830px; display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 10px; }
+.andres-capacity > div { min-height: 120px; display: flex; flex-direction: column; justify-content: space-between; padding: 18px; border: 1px solid #bdcdbd; }
+.andres-capacity > div:last-child { background: var(--sun); border-color: var(--sun); }
+.andres-capacity strong { font-family: var(--display); font-size: 37px; letter-spacing: -.06em; }
+.andres-panel__controls > p:not(.savings-kicker) { color: #5d7367; font-size: 13px; }
+.andres-request-list { max-width: 1050px; display: grid; gap: 11px; }
+.andres-request { display: grid; grid-template-columns: minmax(0,1fr) auto; gap: 10px 24px; align-items: center; padding: 19px 22px; border-left: 3px solid var(--teal); background: #e8ece2; }
+.andres-request > div { min-width: 0; display: grid; gap: 4px; }
+.andres-request strong { font-family: var(--display); font-size: 20px; letter-spacing: -.04em; }
+.andres-request span { font-size: 11px; }
+.andres-request small { color: #587264; font-size: 10px; overflow-wrap: anywhere; }
+.andres-request p { grid-column: 1 / -1; margin: 0; color: #815142; font-size: 11px; }
+.andres-request__done { color: #28725b; font-weight: 700; }
+.andres-action-message { min-height: 20px; margin: 14px 0; color: var(--forest); font-size: 12px; font-weight: 700; }
+.andres-projection-grid { grid-template-columns: repeat(3, minmax(0,1fr)); }
+.andres-projection-grid__total { grid-column: span 2; }
+.andres-panel__events > ol { max-width: 1050px; margin: 0; padding: 0; border-top: 1px solid #bdcbbd; list-style: none; }
+.andres-panel__events li { display: grid; grid-template-columns: minmax(170px,1fr) minmax(190px,1fr) minmax(180px,1fr); gap: 12px; padding: 15px 0; border-bottom: 1px solid #cbd6cb; font-size: 11px; }
+.andres-panel__events li strong { font-weight: 700; }
+.andres-panel__events li small { color: #607669; overflow-wrap: anywhere; }
+.andres-panel__events > p { color: #5d7367; font-size: 13px; }
+
+@media (max-width: 850px) {
+  .andres-panel__heading { align-items: start; flex-direction: column; }
+  .andres-metric-grid { grid-template-columns: repeat(3, minmax(0,1fr)); }
+  .andres-cost-grid { grid-template-columns: repeat(2, minmax(0,1fr)); }
+}
+@media (max-width: 600px) {
+  .andres-panel { padding-top: 39px; padding-bottom: 75px; }
+  .andres-panel__heading h1 { font-size: 49px; }
+  .andres-panel__section { padding-top: 57px; }
+  .andres-metric-grid { grid-template-columns: repeat(2, minmax(0,1fr)); }
+  .andres-metric { min-height: 112px; padding: 13px; }
+  .andres-metric strong { font-size: 31px; }
+  .andres-panel__economics, .andres-panel__projection { margin-top: 55px; padding-top: 55px; padding-bottom: 56px; border-radius: 0; }
+  .andres-cost-grid, .andres-projection-grid, .andres-capacity { grid-template-columns: repeat(2, minmax(0,1fr)); }
+  .andres-cost-grid > div, .andres-projection-grid > div, .andres-capacity > div { min-height: 108px; padding: 13px; }
+  .andres-cost-grid__cac, .andres-projection-grid__total { grid-column: 1 / -1; }
+  .andres-cost-grid strong, .andres-projection-grid strong { font-size: 25px; }
+  .andres-cost-grid__cac strong { font-size: 22px; }
+  .andres-request { grid-template-columns: 1fr; padding: 17px; }
+  .andres-request .button { width: 100%; }
+  .andres-panel__events li { grid-template-columns: 1fr; gap: 5px; }
+}

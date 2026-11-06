@@ -2,6 +2,26 @@
 
 Aplicación React/Vite con una landing ficticia, una calculadora financiera de Nivel 2, un simulador de caja a 24 meses y un formulario conectado únicamente a una API JSON local de demostración.
 
+## Primera etapa de referidos
+
+`/mi-ahorro` muestra una familia de demostración con seis meses de ahorro **SIMULADO** desde mayo de 2026. Cada ahorro mensual es el 70 % de una base hipotética; octubre muestra $77 y la suma de mayo a octubre es $441. La familia elige si comparte el ahorro mensual o el acumulado. WhatsApp abre un mensaje preparado, sin afirmar que se haya enviado, y el botón de copia coloca el mismo enlace de invitación en el portapapeles.
+
+`/referidos/sd-7m4q9v2k` presenta la invitación al vecino. El código es opaco y estable para esta demo; la invitación pública no muestra nombre, dirección ni recibo del referente. La ruta de códigos desconocidos muestra un estado inválido con salida al inicio. Los datos y la resolución del código viven en `src/features/referrals/`.
+
+## Segunda etapa de referidos
+
+El vecino introduce primero un importe de luz ficticio. La vista calcula ahorro mensual como importe × 70 %, ahorro anual como ahorro mensual × 12 y recuperación simple como $6.500 ÷ ahorro anual. Todo resultado se marca **ESTIMADO**; el 70 % es un promedio del caso ficticio y el cálculo no incluye otros costos. Por ejemplo, $110 produce $77 al mes, $924 al año y 7,03 años.
+
+Solo después del resultado aparece el formulario de visita de prueba, con nombre ficticio y correo de dominio `.test`. La solicitud es **SIMULADA** y no genera una cita ni contacta a Sol de Casa. Cada envío guarda un identificador, el código de referido, el cálculo y el estado en `localStorage`, bajo `sol-de-casa-referrals-v1`. Un segundo clic o el mismo correo de prueba para el mismo código recupera la solicitud existente; al recargar se muestra su confirmación. Los eventos de compartir, página del vecino, cálculo y solicitud están en la misma capa que agendas, visitas, cierres y recompensas para el panel de Andrés.
+
+La capacidad de esta demo es **una visita agendada por mes y navegador** para poder mostrar ambos estados; es un **SUPUESTO de interfaz**, no la capacidad operativa del caso. Solicitar no ocupa una plaza; agendar sí, y una visita realizada conserva esa plaza del mes. Las solicitudes nuevas sin cupo quedan **En espera · SIMULADO** y conservan el interés. El historial y el cupo pertenecen exclusivamente al navegador de la demo: no se sincronizan entre dispositivos. `sessionStorage` recuerda qué solicitud corresponde a cada pestaña para que una recarga no muestre la confirmación de otro vecino de prueba. El enlace sí puede abrirse en otro dispositivo que tenga acceso al sitio; allí comienza un historial local independiente. Para un uso real harían falta autenticación, datos del inversor, almacenamiento compartido y capacidad administrada por Sol de Casa.
+
+## Cierre de Parte 2
+
+`/mi-ahorro` incluye «Mis referidos», con barra de avance, estado por solicitud y descuentos únicos **[SUPUESTO]**: $15 para quien refirió solo después de visita realizada, y $50 para el nuevo cliente solo después de venta cerrada. `/panel-andres` separa eventos activos **SIMULADOS** de la proyección **SIMULADA** del caso. Sus controles avanzan solicitudes por etapas válidas; el costo activo se calcula con visitas realizadas, recompensas habilitadas y ventas cerradas. Con cero ventas muestra «Sin ventas para calcular». La agenda mensual local bloquea nuevas reservas al agotarse.
+
+Ejecuta `npm run verify:referrals` para comprobar cálculos, rutas, atribución, recarga, duplicados, etapas, premios, CAC y capacidad; `npm run build` compila la aplicación. La [ficha de growth](markdowns/parte-2-growth.md) y el [guion de tres minutos con revisión](markdowns/parte-2-demo-y-revision.md) documentan decisiones y límites.
+
 ## Inicio local
 
 Requiere Node.js y npm. Instala las dependencias una vez con `npm install`.
