@@ -33,6 +33,8 @@ export function getActiveReferralMetrics(state, month = getDemoMonth()) {
 
   return {
     shareActionOpens: count('share_action_opened'),
+    whatsAppOpens: count('whatsapp_opened'),
+    copiedLinks: count('referral_link_copied'),
     referralPageVisits: count('referral_opened'),
     estimates: count('estimate_viewed'),
     requests: state.requests.length,

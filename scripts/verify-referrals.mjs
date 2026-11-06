@@ -45,6 +45,10 @@ test('entradas vacías, cero, negativas e inválidas se rechazan', () => {
   const withCents = calculateReferralEstimate(110.5);
   assert.equal(withCents.monthlySaving, 77.35);
   assert.equal(withCents.annualSaving, 928.2);
+  const smallBill = calculateReferralEstimate(parseMonthlyBill('1,01').amount);
+  assert.equal(smallBill.monthlySaving, 0.707);
+  assert.equal(smallBill.annualSaving, 8.484);
+  assert.equal(smallBill.simplePaybackYears.toFixed(2), '766.15');
 });
 
 test('enlace compartido y código inválido', () => {
@@ -53,6 +57,8 @@ test('enlace compartido y código inválido', () => {
   assert.ok(resolveReferralCode(DEMO_REFERRAL_CODE));
   assert.equal(resolveReferralCode('codigo-invalido'), null);
   assert.equal(new URL(url).search, '');
+  assert.equal(new URL(getReferralUrl('https://soldecasa.example', DEMO_REFERRAL_CODE, 'acumulado')).search, '?ahorro=acumulado');
+  assert.equal(new URL(getReferralUrl('https://soldecasa.example', DEMO_REFERRAL_CODE, '999999')).search, '');
 });
 
 test('recarga, doble envío, atribución y capacidad agotada', () => {
@@ -102,6 +108,8 @@ test('etapas válidas, premios únicos, CAC activo y proyección del caso', () =
   const storage = new MemoryStorage();
   const estimate = calculateReferralEstimate(110);
   recordReferralEvent({ id: 'share-1', type: 'share_action_opened', referralCode: DEMO_REFERRAL_CODE }, storage);
+  recordReferralEvent({ id: 'share-whatsapp-1', type: 'whatsapp_opened', referralCode: DEMO_REFERRAL_CODE }, storage);
+  recordReferralEvent({ id: 'share-copy-1', type: 'referral_link_copied', referralCode: DEMO_REFERRAL_CODE }, storage);
   recordReferralEvent({ id: 'page-1', type: 'referral_opened', referralCode: DEMO_REFERRAL_CODE }, storage);
   recordReferralEvent({ id: 'calc-1', type: 'estimate_viewed', referralCode: DEMO_REFERRAL_CODE }, storage);
   submitReferralRequest({ id: 'journey-1', referralCode: DEMO_REFERRAL_CODE, name: 'Vecino de prueba 1', email: 'vecino1@example.test', estimate }, storage);
@@ -111,6 +119,8 @@ test('etapas válidas, premios únicos, CAC activo y proyección del caso', () =
   assert.equal(metrics.rewardCost, 0);
   assert.equal(metrics.cac, null);
   assert.deepEqual([metrics.shareActionOpens, metrics.referralPageVisits, metrics.estimates, metrics.requests], [1, 1, 1, 1]);
+  assert.equal(metrics.whatsAppOpens, 1);
+  assert.equal(metrics.copiedLinks, 1);
 
   submitReferralRequest({ id: 'journey-2', referralCode: DEMO_REFERRAL_CODE, name: 'Vecino de prueba 2', email: 'vecino2@example.test', estimate }, storage);
   assert.equal(getLatestRequest(DEMO_REFERRAL_CODE, storage).status, 'received');
@@ -161,6 +171,7 @@ test('etapas válidas, premios únicos, CAC activo y proyección del caso', () =
 
 test('la ruta directa presenta el cálculo, el inválido tiene salida y la recarga muestra confirmación', async () => {
   const originalWindow = globalThis.window;
+  const originalCrypto = Object.getOwnPropertyDescriptor(globalThis, 'crypto');
   try {
     const routeSource = await readFile(new URL('../src/routes/routing.jsx', import.meta.url), 'utf8');
     assert.match(routeSource, /path="\/referidos\/:codigo"/);
@@ -171,16 +182,30 @@ test('la ruta directa presenta el cálculo, el inválido tiene salida y la recar
     const storage = new MemoryStorage();
     const firstTab = new MemoryStorage();
     const secondTab = new MemoryStorage();
+    // On plain HTTP outside localhost, browsers expose getRandomValues without randomUUID.
+    const browserCrypto = globalThis.crypto;
+    Object.defineProperty(globalThis, 'crypto', {
+      configurable: true,
+      value: { getRandomValues: browserCrypto.getRandomValues.bind(browserCrypto) },
+    });
     globalThis.window = { localStorage: storage, sessionStorage: firstTab, location: { origin: 'https://soldecasa.example' } };
     const renderRoute = (path) => renderToString(React.createElement(MemoryRouter, { initialEntries: [path] },
       React.createElement(Routes, null, React.createElement(Route, { path: '/referidos/:codigo', element: React.createElement(ReferralPage) })),
     ));
     const savingsMarkup = renderToString(React.createElement(MemoryRouter, null, React.createElement(SavingsPage)));
     const sharedPath = savingsMarkup.match(/href="(\/referidos\/[^\"]+)"/)?.[1];
-    assert.equal(sharedPath, `/referidos/${DEMO_REFERRAL_CODE}`);
+    assert.equal(sharedPath, `/referidos/${DEMO_REFERRAL_CODE}?ahorro=mensual`);
     const invitation = renderRoute(sharedPath);
     assert.match(invitation, /Descubre cuánto podrías ahorrar/);
     assert.match(invitation, /¿Cuánto pagas de luz al mes/);
+    assert.match(invitation, /Ahorro mensual compartido · SIMULADO/);
+    assert.match(invitation, /\$77/);
+    const accumulated = renderRoute(`/referidos/${DEMO_REFERRAL_CODE}?ahorro=acumulado`);
+    assert.match(accumulated, /Ahorro acumulado compartido · SIMULADO/);
+    assert.match(accumulated, /\$441/);
+    const tampered = renderRoute(`/referidos/${DEMO_REFERRAL_CODE}?ahorro=999999`);
+    assert.doesNotMatch(tampered, /ahorro .* compartido · SIMULADO/i);
+    assert.match(tampered, /Ahorro promedio del caso ficticio/);
     assert.doesNotMatch(invitation, /Solicitar una visita de prueba/);
     const panelWithoutSales = renderToString(React.createElement(MemoryRouter, null, React.createElement(AndresPanelPage)));
     assert.match(panelWithoutSales, /Sin ventas para calcular/);
@@ -231,5 +256,6 @@ test('la ruta directa presenta el cálculo, el inválido tiene salida y la recar
     assert.match(panel, /Capacidad agotada · SIMULADO/);
   } finally {
     globalThis.window = originalWindow;
+    Object.defineProperty(globalThis, 'crypto', originalCrypto);
   }
 });

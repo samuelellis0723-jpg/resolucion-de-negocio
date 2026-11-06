@@ -23,3 +23,9 @@ export const savingsHistory = demoHousehold.months.map(({ month, referenceBill }
 
 export const latestSaving = savingsHistory.at(-1);
 export const accumulatedSaving = savingsHistory.reduce((sum, entry) => sum + entry.saving, 0);
+
+export function getSharedSaving(period) {
+  if (period === 'mensual') return { period, amount: latestSaving.saving };
+  if (period === 'acumulado') return { period, amount: accumulatedSaving };
+  return null;
+}

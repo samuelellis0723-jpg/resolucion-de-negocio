@@ -19,8 +19,8 @@ export function ShareCard({ amount, period, invitation = false }) {
         </div>
         <p>Descubre lo que el sol podría aportar a tu casa.</p>
         <div className="share-card__value">
-          <span>Ahorro promedio del caso ficticio</span>
-          <strong>70 %</strong>
+          <span>{period ? `Ahorro ${period} compartido · SIMULADO` : 'Ahorro promedio del caso ficticio'}</span>
+          <strong>{period ? formatSaving(amount) : '70 %'}</strong>
         </div>
         <small>ESTIMADO · Calcula con tu propio importe mensual. El ahorro de cada hogar puede variar.</small>
       </div>

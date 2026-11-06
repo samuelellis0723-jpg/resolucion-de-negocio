@@ -15,8 +15,10 @@ export function parseMonthlyBill(value) {
 }
 
 export function calculateReferralEstimate(monthlyBill) {
-  const monthlySaving = Math.round((monthlyBill * CASE_AVERAGE_SAVING_RATE + Number.EPSILON) * 100) / 100;
-  const annualSaving = Math.round(monthlySaving * 12 * 100) / 100;
+  const monthlyBillCents = Math.round(monthlyBill * 100);
+  const savingRatePercent = Math.round(CASE_AVERAGE_SAVING_RATE * 100);
+  const monthlySaving = monthlyBillCents * savingRatePercent / 10000;
+  const annualSaving = monthlyBillCents * savingRatePercent * 12 / 10000;
   return {
     monthlyBill,
     monthlySaving,

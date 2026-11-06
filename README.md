@@ -6,7 +6,7 @@ Aplicación React/Vite con una landing ficticia, una calculadora financiera de N
 
 `/mi-ahorro` muestra una familia de demostración con seis meses de ahorro **SIMULADO** desde mayo de 2026. Cada ahorro mensual es el 70 % de una base hipotética; octubre muestra $77 y la suma de mayo a octubre es $441. La familia elige si comparte el ahorro mensual o el acumulado. WhatsApp abre un mensaje preparado, sin afirmar que se haya enviado, y el botón de copia coloca el mismo enlace de invitación en el portapapeles.
 
-`/referidos/sd-7m4q9v2k` presenta la invitación al vecino. El código es opaco y estable para esta demo; la invitación pública no muestra nombre, dirección ni recibo del referente. La ruta de códigos desconocidos muestra un estado inválido con salida al inicio. Los datos y la resolución del código viven en `src/features/referrals/`.
+`/referidos/sd-7m4q9v2k` presenta la invitación al vecino. El código es opaco y estable para esta demo. Los enlaces compartidos llevan solo el código y el período elegido, y la tarjeta reconstruye la cifra simulada sin mostrar nombre, dirección ni recibo del referente. Los enlaces anteriores, sin período, conservan la invitación general. Los datos y la resolución del código viven en `src/features/referrals/`.
 
 ## Segunda etapa de referidos
 
@@ -21,6 +21,8 @@ La capacidad de esta demo es **una visita agendada por mes y navegador** para po
 `/mi-ahorro` incluye «Mis referidos», con barra de avance, estado por solicitud y descuentos únicos **[SUPUESTO]**: $15 para quien refirió solo después de visita realizada, y $50 para el nuevo cliente solo después de venta cerrada. `/panel-andres` separa eventos activos **SIMULADOS** de la proyección **SIMULADA** del caso. Sus controles avanzan solicitudes por etapas válidas; el costo activo se calcula con visitas realizadas, recompensas habilitadas y ventas cerradas. Con cero ventas muestra «Sin ventas para calcular». La agenda mensual local bloquea nuevas reservas al agotarse.
 
 Ejecuta `npm run verify:referrals` para comprobar cálculos, rutas, atribución, recarga, duplicados, etapas, premios, CAC y capacidad; `npm run build` compila la aplicación. La [ficha de growth](markdowns/parte-2-growth.md) y el [guion de tres minutos con revisión](markdowns/parte-2-demo-y-revision.md) documentan decisiones y límites.
+
+Para abrir el enlace desde un celular, usa un origen del sitio accesible para ese dispositivo. `127.0.0.1` solo sirve en el dispositivo que ejecuta Vite. Si se publica la compilación, configura el alojamiento para que las rutas de React Router sirvan `index.html` al abrir un enlace directo. En HTTP, el navegador puede pedir copiar el enlace manualmente desde el campo visible.
 
 ## Inicio local
 

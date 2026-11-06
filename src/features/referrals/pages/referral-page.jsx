@@ -1,9 +1,10 @@
 import { useEffect, useRef, useState } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { Link, useParams, useSearchParams } from 'react-router-dom';
 import { ShareCard, formatSaving } from '../components/share-card.jsx';
 import { calculateReferralEstimate, parseMonthlyBill, CASE_AVERAGE_INSTALLATION_COST } from '../referral-calculator.js';
-import { resolveReferralCode } from '../referral-demo.js';
+import { createReferralId, resolveReferralCode } from '../referral-demo.js';
 import { clearSessionRequest, getRemainingDemoCapacity, getSessionRequest, NEW_CLIENT_REWARD, readReferralState, recordReferralEvent, REFERRAL_STORAGE_KEY, setSessionRequest, submitReferralRequest } from '../referral-store.js';
+import { getSharedSaving } from '../savings-demo.js';
 import './referrals.css';
 
 const paybackFormatter = new Intl.NumberFormat('es-CR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
@@ -29,7 +30,9 @@ function validateContact(name, email) {
 
 export function ReferralPage() {
   const { codigo } = useParams();
+  const [searchParams] = useSearchParams();
   const referral = resolveReferralCode(codigo);
+  const sharedSaving = getSharedSaving(searchParams.get('ahorro'));
   const [billInput, setBillInput] = useState('');
   const [billError, setBillError] = useState('');
   const [estimate, setEstimate] = useState(null);
@@ -44,8 +47,8 @@ export function ReferralPage() {
   const submissionIdRef = useRef(null);
   const submitLockRef = useRef(false);
   const viewIdRef = useRef(null);
-  if (!submissionIdRef.current) submissionIdRef.current = crypto.randomUUID();
-  if (!viewIdRef.current) viewIdRef.current = crypto.randomUUID();
+  if (!submissionIdRef.current) submissionIdRef.current = createReferralId();
+  if (!viewIdRef.current) viewIdRef.current = createReferralId();
 
   useEffect(() => {
     if (!referral) return;
@@ -85,7 +88,7 @@ export function ReferralPage() {
     setEstimate(nextEstimate);
     try {
       recordReferralEvent({
-        id: crypto.randomUUID(), type: 'estimate_viewed', referralCode: referral.code,
+        id: createReferralId(), type: 'estimate_viewed', referralCode: referral.code,
         monthlyBill: nextEstimate.monthlyBill, monthlySaving: nextEstimate.monthlySaving,
       });
     } catch {
@@ -120,7 +123,7 @@ export function ReferralPage() {
 
   function startAnotherDemo() {
     clearSessionRequest(referral.code);
-    submissionIdRef.current = crypto.randomUUID();
+    submissionIdRef.current = createReferralId();
     setSavedRequest(null);
     setEstimate(null);
     setBillInput('');
@@ -151,7 +154,7 @@ export function ReferralPage() {
           <p>Una familia con paneles compartió esta invitación. Calcula tu ahorro <strong>ESTIMADO</strong> con el 70 % promedio del caso ficticio.</p>
           <a className="referral-intro__jump" href="#calcular-ahorro">Calcular mi ahorro <span aria-hidden="true">↓</span></a>
         </div>
-        <div className="referral-intro__card"><ShareCard invitation /></div>
+        <div className="referral-intro__card"><ShareCard invitation {...sharedSaving} /></div>
       </section>}
 
       {!savedRequest && <section className="referral-calculator page-gutter" id="calcular-ahorro" aria-labelledby="estimate-title">
@@ -183,7 +186,7 @@ export function ReferralPage() {
               <div><span>Ahorro anual</span><strong>{formatSaving(estimate.annualSaving)}</strong></div>
               <div><span>Recuperación simple</span><strong>{paybackFormatter.format(estimate.simplePaybackYears)} años</strong></div>
             </div>
-            <p>{formatSaving(estimate.monthlyBill)} × 70 % = {formatSaving(estimate.monthlySaving)} al mes; × 12 = {formatSaving(estimate.annualSaving)} al año. {formatSaving(CASE_AVERAGE_INSTALLATION_COST)} ÷ {formatSaving(estimate.annualSaving)} = {paybackFormatter.format(estimate.simplePaybackYears)} años. <strong>ESTIMADO:</strong> usa un promedio del caso y excluye otros costos; el resultado real puede variar.</p>
+            <p>Aplicamos el 70 % a tu recibo mensual y lo proyectamos a 12 meses. Dividimos el costo de instalación de {formatSaving(CASE_AVERAGE_INSTALLATION_COST)} entre el ahorro anual. Redondeamos las cifras al mostrarlas. <strong>ESTIMADO.</strong> El cálculo excluye otros costos y el resultado real puede variar.</p>
           </div>
         )}
       </section>}

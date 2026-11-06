@@ -17,6 +17,8 @@ const statusLabels = {
 };
 const eventLabels = {
   share_action_opened: 'Acción de compartir abierta',
+  whatsapp_opened: 'Acción de WhatsApp iniciada',
+  referral_link_copied: 'Enlace copiado',
   referral_opened: 'Página del vecino visitada',
   estimate_viewed: 'Cálculo visto',
   request_received: 'Solicitud recibida',
@@ -46,6 +48,8 @@ export function AndresPanelPage() {
   const projection = getProjectedReferralEconomics();
   const metrics = [
     ['Acciones de compartir abiertas', active.shareActionOpens],
+    ['Acciones de WhatsApp iniciadas', active.whatsAppOpens],
+    ['Enlaces copiados', active.copiedLinks],
     ['Visitas a la página del vecino', active.referralPageVisits],
     ['Cálculos vistos', active.estimates],
     ['Solicitudes guardadas', active.requests],
@@ -80,7 +84,7 @@ export function AndresPanelPage() {
         <div className="andres-metric-grid">
           {metrics.map(([label, value]) => <div className="andres-metric" key={label}><span>{label}</span><strong>{value}</strong></div>)}
         </div>
-        <p className="andres-panel__caption">Una solicitud, agenda o espera no cuenta como visita realizada. Cada evento y su identificador aparecen al final del panel.</p>
+        <p className="andres-panel__caption">Abrir WhatsApp o copiar un enlace registra una intención de compartir. Las visitas realizadas se cuentan al completar la visita. Cada evento y su identificador aparecen al final del panel.</p>
       </section>
 
       <section className="andres-panel__section andres-panel__economics" aria-labelledby="economics-title">

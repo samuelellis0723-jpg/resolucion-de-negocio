@@ -2,9 +2,9 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { ShareCard, formatSaving } from '../components/share-card.jsx';
 import { MyReferrals } from '../components/my-referrals.jsx';
-import { getReferralUrl } from '../referral-demo.js';
+import { createReferralId, getReferralUrl } from '../referral-demo.js';
 import { clearSessionRequest, recordReferralEvent } from '../referral-store.js';
-import { accumulatedSaving, demoHousehold, latestSaving, savingsHistory } from '../savings-demo.js';
+import { accumulatedSaving, demoHousehold, getSharedSaving, latestSaving, savingsHistory } from '../savings-demo.js';
 import './referrals.css';
 
 const monthFormatter = new Intl.DateTimeFormat('es-CR', { month: 'long', year: 'numeric', timeZone: 'UTC' });
@@ -22,26 +22,36 @@ export function SavingsPage() {
   const [selectedPeriod, setSelectedPeriod] = useState('mensual');
   const [copyStatus, setCopyStatus] = useState('');
   const [whatsAppStatus, setWhatsAppStatus] = useState('');
-  const selectedAmount = selectedPeriod === 'mensual' ? latestSaving.saving : accumulatedSaving;
-  const referralUrl = getReferralUrl(window.location.origin, demoHousehold.referralCode);
+  const selectedAmount = getSharedSaving(selectedPeriod).amount;
+  const referralUrl = getReferralUrl(window.location.origin, demoHousehold.referralCode, selectedPeriod);
+  const invitationPath = new URL(referralUrl);
   const shareMessage = getShareMessage(selectedAmount, selectedPeriod, referralUrl);
   const whatsAppUrl = `https://wa.me/?text=${encodeURIComponent(shareMessage)}`;
 
   async function copyLink() {
+    setWhatsAppStatus('');
     try {
       await navigator.clipboard.writeText(referralUrl);
       setCopyStatus('Enlace copiado. Ya puedes pegarlo donde quieras.');
     } catch {
       setCopyStatus('No se pudo copiar automáticamente. Selecciona el enlace de abajo para copiarlo.');
+      return;
+    }
+    recordShareEvent('referral_link_copied');
+  }
+
+  function recordShareEvent(type) {
+    try {
+      recordReferralEvent({ id: createReferralId(), type, referralCode: demoHousehold.referralCode });
+    } catch {
+      // Analytics must not interrupt sharing when browser storage is unavailable.
     }
   }
 
-  function openShareAction() {
-    try {
-      recordReferralEvent({ id: crypto.randomUUID(), type: 'share_action_opened', referralCode: demoHousehold.referralCode });
-    } catch {
-      setCopyStatus('No se pudo registrar esta apertura en el navegador.');
-    }
+  function openWhatsApp() {
+    setCopyStatus('');
+    setWhatsAppStatus('Mensaje preparado para WhatsApp. El envío depende de ti.');
+    recordShareEvent('whatsapp_opened');
   }
 
   return (
@@ -64,7 +74,7 @@ export function SavingsPage() {
             <small>SIMULADO · suma de los seis meses mostrados abajo</small>
           </article>
         </div>
-        <a className="savings-share-jump" href="#compartir-ahorro" onClick={openShareAction}>Compartir mi ahorro <span aria-hidden="true">↗</span></a>
+        <a className="savings-share-jump" href="#compartir-ahorro" onClick={() => recordShareEvent('share_action_opened')}>Compartir mi ahorro <span aria-hidden="true">↗</span></a>
       </section>
 
       <section className="savings-history page-gutter" aria-labelledby="history-title">
@@ -111,7 +121,7 @@ export function SavingsPage() {
             <p>{shareMessage}</p>
           </div>
           <div className="share-actions">
-            <a className="button button--sun" href={whatsAppUrl} target="_blank" rel="noopener noreferrer" onClick={() => setWhatsAppStatus('WhatsApp abierto. El mensaje aún no se ha enviado.')}>Abrir WhatsApp <span aria-hidden="true">↗</span></a>
+            <a className="button button--sun" href={whatsAppUrl} target="_blank" rel="noopener noreferrer" onClick={openWhatsApp}>Abrir WhatsApp <span aria-hidden="true">↗</span></a>
             <button className="button button--outline" type="button" onClick={copyLink}>Copiar enlace</button>
           </div>
           <p className="share-status" role="status" aria-live="polite">{copyStatus || whatsAppStatus}</p>
@@ -122,7 +132,7 @@ export function SavingsPage() {
         <div className="savings-share__preview">
           <span>Vista previa · SIMULADO</span>
           <ShareCard amount={selectedAmount} period={selectedPeriod} />
-          <Link to={`/referidos/${demoHousehold.referralCode}`} onClick={() => clearSessionRequest(demoHousehold.referralCode)}>Ver la invitación como vecino <span aria-hidden="true">↗</span></Link>
+          <Link to={invitationPath.pathname + invitationPath.search} onClick={() => clearSessionRequest(demoHousehold.referralCode)}>Ver la invitación como vecino <span aria-hidden="true">↗</span></Link>
         </div>
       </section>
       <MyReferrals />
